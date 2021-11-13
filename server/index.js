@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import authRoutes from './routes/auth.js'
 import analysisRoutes from './routes/analysis.js'
+import videoCallRoutes from './controllers/videoCall/videoCallRoutes.js'
 
 dotenv.config();
 const app = express();
@@ -30,6 +31,7 @@ app.use(function (req, res, next) {
 });
 
 //define endpoint for all the routes in authRoutes.js and analysisRoutes.js
-app.use('/user', authRoutes)
-app.use('/analysis', analysisRoutes)
+app.use('/user', authRoutes);
+app.use('/analysis', analysisRoutes);
+app.use('/video-call', videoCallRoutes);
 
