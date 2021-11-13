@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://fontmeme.com/permalink/210807/b29d89552af634629c87346070924ac2.png" alt="samarkan-font" border="0">
+    <img src="https://fontmeme.com/permalink/211113/7d2d2b68eee534bbc07424fa5e08845e.png" alt="samarkan-font" border="0">
   </a>
   <h3 align="center">Video Analyzer Platform</h3>
 
