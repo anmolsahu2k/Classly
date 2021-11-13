@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import User from "../models/user.js"
 
 export const signup = async (req, res) => {
-    const { email, password, confirmPassword, firstName, lastName } = req.body;
+    const { email, password, confirmPassword, firstName, lastName, phone } = req.body;
 
     try {
         const existingUser = await User.findOne({ email });
@@ -16,7 +16,7 @@ export const signup = async (req, res) => {
 
         if (password !== confirmPassword) return res.status(400).json({ message: "Passwords don't match! " });
         const hashedPassword = await bcrypt.hash(password, 12);
-        const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+        const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, phone });
         const token = jwt.sign({ email: result.email, id: result._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
         mongoose.connection.close()
         return res.status(200).json({ result, token });
