@@ -28,3 +28,5 @@ export const getComparisonData = (conversationId1, conversationId2) => API.get(`
 export const getConversationList = () => API.get('/analysis/pitchAnalysis/getConversationList');
 export const fetchAnalysisResult = (conversationId) => API.get(`/analysis/pitchAnalysis/fetchAnalysisResult/${conversationId}`);
 
+//for video calling
+export const joincall = (roomId) => API.get(`/video-call/${roomId}`)

@@ -17,6 +17,8 @@ import PitchAnalysisResult from './components/PitchAnalysisResult/PitchAnalysisR
 import InterviewAnalysis from './components/InterviewAnalysis/InterviewAnalysis';
 import InterviewAnalysisResult from './components/InterviewAnalysisResult/InterviewAnalysisResult';
 import Comparison from './components/Comparison/Comparison';
+import JoinRoom from './components/VideoCall/JoinRoom'
+import VideoCall from './components/VideoCall/VideoCall'
 
 
 const THEME = createTheme({
@@ -49,6 +51,9 @@ const App = () => {
                         <Route path="/pitchAnalysisResult" exact component={PitchAnalysisResult} />
                         <Route path="/interviewAnalysis" exact component={InterviewAnalysis} />
                         <Route path="/interviewAnalysisResult" exact component={InterviewAnalysisResult} />
+
+                        <Route path="/joinRoom" exact component={JoinRoom} />
+                        <Route path="/videoCall/:id" exact component={VideoCall} />
 
                     </Switch>
                 </Container>
