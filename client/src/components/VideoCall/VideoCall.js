@@ -13,7 +13,11 @@ const VideoCall = ({ match }) => {
     dispatch(joincall(id))
 
     let res = {};
+<<<<<<< HEAD
     res['status'] = 200;
+=======
+    res['status'] = 200;  
+>>>>>>> 7179377c18284b5b7735a5680893657c93633221
     if (res.status === 200) {
       const script = document.createElement("script");
       script.innerHTML = `window.DailyIframe.createFrame({

@@ -17,6 +17,7 @@ const PitchAnalysis = () => {
     const classes = useStyles();
     const history = useHistory();
     const [formData, setFormData] = useState({ meetingName: "", fileName: "video.mp4", file: null, url: '' })
+    const [roomID, setRoomID] = useState("")
     const [isSubmit, setIsSubmit] = useState(false)
     const [selectedFileName, setSelectedFileName] = useState("");
 
@@ -31,6 +32,18 @@ const PitchAnalysis = () => {
         data.append('url', formData.url)
         dispatch(sendvideodata(data, history))
         setIsSubmit(true)
+    }
+
+    const handleRoomSubmit = (e) => {
+        // const data = classFormData;
+        // console.log(data);
+        // dispatch(joincall(data))
+        console.log('hi', roomID)
+        window.location.assign(`/videoCall/${roomID}`);
+    }
+
+    const handleClassChange = (e) => {
+        setRoomID(e.target.value)
     }
 
     const handleChange = (e) => {
@@ -93,6 +106,14 @@ const PitchAnalysis = () => {
                         <Typography variant="h6">
                             This service can be used to analyze a pre recorded meeting event to provide additional insights including sentiment, emotions and many more traits. Please enter video url(YouTube) OR upload a local video to get insights.
                         </Typography>
+                    </div>
+                    <div>
+                    <form>
+                            <TextField className={classes.input} name='className' value={formData.className} onChange={handleClassChange} variant="outlined" required fullWidth label='Class Name' />
+                            <Button variant="contained" color="primary" component="span" onClick={handleRoomSubmit}>
+                                Join Class
+                            </Button>
+                            </form>
                     </div>
                 </Grid>
             </Grid>
