@@ -29,3 +29,18 @@ export const sendEmail = (options) => {
 };
 
 
+export const sendSms = (options) => {
+    return new Promise(async (resolve, reject) => {
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error);
+            console.log(body);
+            try {
+                resolve(body);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    });
+};
+
+
