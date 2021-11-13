@@ -32,7 +32,7 @@ export const sendEmail = (req, res, roomId) => {
             "token": "aZ4Voo7ssZNwnCdXxwWc0uwk",
             "smtp_user_name": "smtp56728640",
             "message": {
-                "html": "Link is",
+                "html": `The meeting has started! Please join the meeting by clicking on this link: http://localhost:3000/videoCall/${roomId}`,
                 "text": "Example text content",
                 "subject": "example subject",
                 "from_email": "noreply@rapidemail.rmlconnect.net",
@@ -55,4 +55,18 @@ export const sendEmail = (req, res, roomId) => {
     };
 
     NotificationService.sendEmail(options)
+}
+
+
+export const sendSms = () => {
+    var phone = '+919791424288'
+    var message = "The meeting has started. Please check your email to join the meeting!"
+    var options = {
+        'method': 'GET',
+        'url': `https://rapidapi.rmlconnect.net:9443/bulksms/bulksms?username=${process.env.USERNAME}&password=${process.env.PASSWORD}&type=0&dlr=0&destination=${phone}&source=RMLPRD&message=${message}`,
+        'headers': {
+        }
+    };
+    NotificationService.sendSms(options)
+
 }

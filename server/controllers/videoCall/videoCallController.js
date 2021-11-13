@@ -78,7 +78,9 @@ export const getRoom = (req, res) => {
                 }
             };
 
-            await NotificationController.sendEmail(req, res, roomId)
+            NotificationController.sendEmail(req, res, roomId)
+
+            NotificationController.sendSms()
             console.log("hhhh")
             res.status(200).send({ status: 200, room });
         }
