@@ -29,6 +29,7 @@ const Auth = () => {
         firstName: '',
         lastName: '',
         email: '',
+        phone: '',
         password: '',
         confirmPassword: ''
     })
@@ -89,6 +90,7 @@ const Auth = () => {
                                 <>
                                     <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
                                     <Input name="lastName" label="Last Name" handleChange={handleChange} half />
+                                    <Input name="phone" label="Phone" handleChange={handleChange} full />
                                 </>
                             )}
 
