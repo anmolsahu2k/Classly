@@ -115,14 +115,17 @@ Performance analytics is based on the combined data from the verbal as well as n
 
 ### Applications:
 Following are the real world applications of our idea.
-As a student or a professional, everyone needs a platform to assess their communication skills. Our platform will provide them a medium to assess themselves and their performance in various circumstances. I.e. pitch meetings, presentations, SWOT analysis presentations . 
-Our platform will help users to assess their performance in mock peer to peer interviews conducted on their mutual interests, which will give them an insight about themselves.
-Our Application can also be used to get a detailed analysis of the applicant/users who are subjected to any type of interview. (Job Interview, Group discussion etc.).
+- Class can be recorded by teacher or student as and when required, which gets downloaded into the local folder and can be referenced in the future.
+- Our application can also be used to get a detailed analysis of the teacher and student interaction which happens during the session and can be later used to provide the parents a better perspective of their child’s performance.
+- Timely notifications are sent via email, SMS and whatsapp to both the students and the teachers so that no one misses a session and assignments.
+- Teachers can view detailed report of how interactive the class is. On the basis of that they get suggestion report to make positive changes in their teaching
+- Compare visual data between different classroom sessions
+
 
 
 
 ### Final Result: 
-The outcome of our idea will be a platform where users(i.e. Students, professionals) will be able to assess themselves or others on verbal and non-verbal aspects. A detailed analysis with user-friendly visualization will help different users in separate ways. Teachers can easily oraganize classes and students will be alerted in a timely manner
+The outcome of our idea will be a platform where users(i.e. Students, Teachers) will be able to assess themselves or others on verbal and non-verbal aspects. A detailed analysis with user-friendly visualization will help different users in separate ways. Teachers can easily oraganize classes and students will be alerted in a timely manner
 
 ### Future Plans: 
 Weekly tasks for students to upscale their skills.
@@ -133,8 +136,6 @@ Peer to peer communication and comparison among friends from friend’s list.
 Adding customer support using Route Mobile Voice API.
 Much More Efficient use of Route Mobile Whatsapp API
 Sending suggestions to teacher and students according to classroom session via whatsapp/email/sms
-
-
 
 
 
