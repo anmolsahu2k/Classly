@@ -81,7 +81,7 @@ const SentimentAnalysis = () => {
         <Grow in={open} >
             <div>
                 <Paper style={{ backgroundColor: '#e8e8e8', padding: '2rem', width: '60%', margin: '2rem auto', borderRadius: '25px', boxShadow: 'rgba(0, 0, 0, 0.5) 1px 1px 9px 5px', display: 'flex', justifyContent: 'center' }}>
-                    <YouTube videoId="1mgrHcwcLgU" opts={opts} onReady={_onReady} />
+                    <YouTube videoId="jMa2HH2r_Fg" opts={opts} onReady={_onReady} />
                 </Paper>
 
                 <Paper style={{ backgroundColor: '#e8e8e8', padding: '2rem', width: '60%', margin: '2rem auto', borderRadius: '25px', boxShadow: 'rgba(0, 0, 0, 0.5) 1px 1px 9px 5px' }}>
