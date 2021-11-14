@@ -2,7 +2,6 @@ import * as VideoCallService from './videoCallService.js'
 import * as NotificationController from '../notification/notificationController.js'
 export const getRoom = (req, res) => {
     const roomId = req.params.id
-    console.log(roomId)
     let options = {
         'method': 'GET',
         'url': `https://api.daily.co/v1/rooms/${roomId}`,
@@ -80,7 +79,8 @@ export const getRoom = (req, res) => {
 
             NotificationController.sendEmail(req, res, roomId)
 
-            NotificationController.sendSms()
+            await NotificationController.sendSms()
+            await NotificationController.sendViaWhatsapp()
             console.log("hhhh")
             res.status(200).send({ status: 200, room });
         }

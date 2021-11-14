@@ -44,3 +44,18 @@ export const sendSms = (options) => {
 };
 
 
+export const sendViaWhatsapp = (options) => {
+    return new Promise(async (resolve, reject) => {
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error);
+            console.log(body);
+            try {
+                resolve(body);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    });
+};
+
+

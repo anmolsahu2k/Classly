@@ -67,6 +67,54 @@ export const sendSms = () => {
         'headers': {
         }
     };
-    NotificationService.sendSms(options)
+    return NotificationService.sendSms(options)
+
+}
+
+
+export const sendViaWhatsapp = () => {
+    console.log("whatsapp")
+    var options = {
+        'method': 'POST',
+        'url': 'https://rapidapi.rmlconnect.net/wbm/v1/message',
+        'headers': {
+            'Content-Type': 'application/json',
+            'Authorization': `${process.env.WHATSAPP_TOKEN}`
+        },
+        json: true,
+        body: {
+            "phone": "+919415552244",
+            "media": {
+                "type": "media_template",
+                "template_name": "admission_confirmation",
+                "lang_code": "en",
+                "body": [
+                    {
+                        "text": "test"
+                    },
+                    {
+                        "text": "text"
+                    },
+                    {
+                        "text": "date"
+                    },
+                    {
+                        "text": "date"
+                    },
+                    {
+                        "text": "text"
+                    }
+                ],
+                "button": [
+                    {
+                        "button_no": "1",
+                        "url": "http://localhost:3000/video-call/Test"
+                    }
+                ]
+            }
+        }
+
+    };
+    return NotificationService.sendViaWhatsapp(options)
 
 }
