@@ -66,11 +66,12 @@ export default function Swatch({
                         position: "absolute",
                         backgroundColor: "#f0f0f0",
                         height: `${window.innerHeight * 0.09 * 8}px`,
-                        width: `${window.innerWidth * 0.073 * 1.8}px`,
+                        width: `${window.innerWidth * 0.073 * 1.3}px`,
                         left: "2px",
                         top: `${(window.innerHeight - window.innerHeight * 0.09 * 8) / 2
                             }px`,
                         borderRadius: "10px",
+                        marginTop: '5rem'
                     }}
                 >
                     <button
@@ -202,11 +203,12 @@ export default function Swatch({
                                 window.innerWidth <= 1024
                                     ? `${window.innerWidth * 0.073 * 5.6}px`
                                     : `${window.innerWidth * 0.073 * 4.79}px`,
-                            height: `${window.innerHeight * 0.1}px`,
+                            height: `${window.innerHeight * 0.25}px`,
                             right: `${(window.innerWidth - window.innerWidth * 0.073 * 4.8) / 20
                                 }px`,
                             top: "0px",
                             borderRadius: "10px",
+                            marginTop:'10rem'
                         }}
                     >
                         <button

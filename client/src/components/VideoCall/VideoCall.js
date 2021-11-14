@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Route, NavLink, Redirect } from 'react-router-dom';
 import { joincall } from "../../actions/videoCall";
+import { Button, Typography } from '@material-ui/core';
 
 const VideoCall = ({ match }) => {
   console.log(window.location.href.split("/")[4])
   const id = window.location.href.split("/")[4];
+  const [isStartRecording, setStartRecording] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,7 +24,8 @@ const VideoCall = ({ match }) => {
               width: "100%",
               height: "100vh",
               border: "0",
-              zIndex: 9999
+              zIndex: 9999,
+              "overflow-y": 'scroll'
             },
             showLeaveButton: true,
             showFullscreenButton: true,
@@ -34,20 +37,19 @@ const VideoCall = ({ match }) => {
       let start = document.getElementById('start'),
         stop = document.getElementById('stop'),
         mediaRecorder;
-
+      let stream;
       start.addEventListener('click', async function () {
-        let stream = await recordScreen();
+        stream = await recordScreen();
         let mimeType = 'video/mp4';
         mediaRecorder = createRecorder(stream, mimeType);
         let node = document.createElement("p");
-        node.textContent = "Started recording";
         document.body.appendChild(node);
       })
 
       stop.addEventListener('click', function () {
         mediaRecorder.stop();
         let node = document.createElement("p");
-        node.textContent = "Stopped recording";
+        stream.getTracks().forEach(track => track.stop())
         document.body.appendChild(node);
       })
 
@@ -80,32 +82,33 @@ const VideoCall = ({ match }) => {
       function saveFile(recordedChunks) {
 
         const blob = new Blob(recordedChunks, {
-          type: 'video/webm'
+          type: 'video/mp4'
         });
         let filename = window.prompt('Enter file name'),
           downloadLink = document.createElement('a');
         downloadLink.href = URL.createObjectURL(blob);
-        downloadLink.download = `${filename}.webm`;
+        downloadLink.download = `${filename}.mp4`;
 
         document.body.appendChild(downloadLink);
         downloadLink.click();
         URL.revokeObjectURL(blob); // clear from memory
         document.body.removeChild(downloadLink);
       }
-
-      setTimeout(() => {
-        console.log(document.getElementsByTagName('iframe')[0].getElementsByTagName('a'))
-        console.log(document, document.getElementsByClassName('jsx-2122962381'), document.getElementsByTagName('a')[2].innerHTML)
-      }, 10000);
     }
     // })
     // .catch((err) => console.log(err));
   }, [id]);
 
-  return <div>
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
-  </div>;
+  const handleStartRecording = (e) => {
+    setStartRecording(!isStartRecording)
+  }
+
+  return (
+    <div style={{margin: '2rem auto', display: 'flex', justifyContent: 'center'}}>
+      <Button variant="contained" color="primary" style={{marginRight: '1rem'}} onClick={handleStartRecording} disabled={isStartRecording} align="center" id="start">Start Screen Recording</Button>
+      <Button variant="contained" color="error" style={{marginLeft: '1rem'}} onClick={handleStartRecording} disabled={!isStartRecording} align="center" id="stop">Stop Screen Recording</Button>
+    </div>
+  )
 }
 
 export default VideoCall
