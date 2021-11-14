@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'https://classly-elearning.herokuapp.com/' });
+const API = axios.create({ baseURL: 'https://classy-elearning.herokuapp.com/' });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) {
