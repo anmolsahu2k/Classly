@@ -56,7 +56,7 @@ export const getIntentAnalysis = (text) => {
     console.log("getIntentAnalysis")
     return new Promise((resolve, reject) => {
         request.post({
-            url: `https://apis.paralleldots.com/v4/intent_batch`,
+            url: `https://apis.paralleldots.com/v4/new/intent`,
             form: {
                 api_key: process.env.API_KEY3,
                 text: JSON.stringify(text)

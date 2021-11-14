@@ -55,6 +55,9 @@ export const getRoom = (req, res) => {
                         type: "to"
                     }
                 })
+                const name = students.map((student) => {
+                    return student.name
+                })
                 console.log(email, "////////")
                 let phoneStr = ''
                 const phone = students.map((student) => {
@@ -63,7 +66,7 @@ export const getRoom = (req, res) => {
                 let number = phone[0].substring(0, phone[0].length - 3)
                 await NotificationController.sendEmail(req, res, roomId, email)
                 await NotificationController.sendSms(number)
-                await NotificationController.sendViaWhatsapp(number)
+                await NotificationController.sendViaWhatsapp(number, name)
                 console.log("hhhh")
                 res.status(200).send({ status: 200, room });
             })

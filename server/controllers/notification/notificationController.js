@@ -32,11 +32,11 @@ export const sendEmail = (req, res, roomId, email) => {
             "token": "aZ4Voo7ssZNwnCdXxwWc0uwk",
             "smtp_user_name": "smtp56728640",
             "message": {
-                "html": `The meeting has started! Please join the meeting by clicking on this link: http://localhost:3000/videoCall/${roomId}`,
-                "text": "Example text content",
-                "subject": "example subject",
+                "html": `The class has started! Please join the class by clicking on this link: http://localhost:3000/videoCall/${roomId}`,
+                "text": "Please Join the meeting",
+                "subject": "ClassRoom session Link",
                 "from_email": "noreply@rapidemail.rmlconnect.net",
-                "from_name": "Example Name",
+                "from_name": "Classly",
                 "to": email,
                 "headers": {
                     "Reply-To": "noreply@rapidemail.rmlconnect.net",
@@ -54,7 +54,7 @@ export const sendEmail = (req, res, roomId, email) => {
 
 export const sendSms = (phone) => {
     var phone = phone
-    var message = "The meeting has started. Please check your email to join the meeting!"
+    var message = "The class has started. Please check your Email to join the meeting!"
     var options = {
         'method': 'GET',
         'url': `https://rapidapi.rmlconnect.net:9443/bulksms/bulksms?username=${process.env.USERNAME}&password=${process.env.PASSWORD}&type=0&dlr=0&destination=${phone}&source=RMLPRD&message=${message}`,
@@ -66,7 +66,7 @@ export const sendSms = (phone) => {
 }
 
 
-export const sendViaWhatsapp = (phone) => {
+export const sendViaWhatsapp = (phone, name) => {
     var options = {
         'method': 'POST',
         'url': 'https://rapidapi.rmlconnect.net/wbm/v1/message',
@@ -76,7 +76,7 @@ export const sendViaWhatsapp = (phone) => {
         },
         json: true,
         body: {
-            "phone": phone,
+            "phone": "+919415552244",
             "media": {
                 "type":
                     "media_template",
@@ -85,7 +85,7 @@ export const sendViaWhatsapp = (phone) => {
                 "lang_code": "en",
                 "body": [
                     {
-                        "text": `Dear `
+                        "text": "The meeting has started!!"
                     },
                     {
                         "text": "text"

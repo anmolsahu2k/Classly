@@ -17,7 +17,7 @@ const SuggestionPage = () => {
                         <Typography style={{ width: '100%', marginTop: '4rem', textAlign: 'left', justifyContent: 'center', fontSize: 32, fontWeight: 'bold' }}>Pace</Typography>
                         <Typography variant="body1" style={{ width: '100%', textAlign: 'left', fontSize: 20 }}>Your Pace is <strong>optimal</strong>, which is between the range of <strong>150 WPM - 200 WPM</strong>. You don't need further correction.</Typography>
                         <Typography variant="h3" style={{ width: '100%', marginTop: '4rem', textAlign: 'left', justifyContent: 'center', fontSize: 32, fontWeight: 'bold' }}>Overall Emotion</Typography>
-                        <Typography variant="body1" style={{ width: '100%', textAlign: 'left', fontSize: 20 }}>Overall Emotion of the video is <strong>neutral</strong>. Please increase <strong>interaction</strong> by answering or questioning the students.</Typography>
+                        <Typography variant="body1" style={{ width: '100%', textAlign: 'left', fontSize: 20 }}>Overall Emotion of the video is <strong>Angry</strong>. Please increase <strong>interaction</strong> by answering or questioning the students.</Typography>
                         <Typography variant="h3" style={{ width: '100%', marginTop: '4rem', textAlign: 'left', justifyContent: 'center', fontSize: 32, fontWeight: 'bold' }}>Words Suggestions</Typography>
                         <Typography variant="body1" style={{ width: '100%', textAlign: 'left', fontSize: 20 }}>You can use following words to <strong>improve</strong> your interview effectiveness.</Typography>
                         <ul>
