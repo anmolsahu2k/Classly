@@ -92,16 +92,16 @@ const Auth = () => {
                                     <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
                                     <Input name="lastName" label="Last Name" handleChange={handleChange} half />
                                     <Input name="phone" label="Phone" handleChange={handleChange} full />
-                                    <FormControl variant="outlined" fullWidth className={classes.formControl} >
-                                        <InputLabel id="demo-simple-select-outlined-label">Role</InputLabel>
+                                    <FormControl variant="outlined" fullWidth >
+                                        <InputLabel id="role">Role</InputLabel>
                                         <Select
-                                            labelId="demo-simple-select-outlined-label"
+                                            name="role"
+                                            labelId="role"
                                             id="demo-simple-select-outlined"
                                             onChange={handleChange}
-                                            label="role"
+                                            label="Role"
                                             fullWidth
                                         >
-
                                             <MenuItem value='student'>Student</MenuItem>
                                             <MenuItem value='teacher'>Teacher</MenuItem>
                                         </Select>
