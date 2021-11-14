@@ -18,7 +18,7 @@ export const addUserToSMTP = (req, res) => {
             res.status(500).json({ message: "Something went wrong!" })
         })
 }
-export const sendEmail = (req, res, roomId) => {
+export const sendEmail = (req, res, roomId, email) => {
     var options = {
         'method': 'POST',
         'url': 'https://rapidemail.rmlconnect.net/v1.0/messages/sendMail',
@@ -37,13 +37,7 @@ export const sendEmail = (req, res, roomId) => {
                 "subject": "example subject",
                 "from_email": "noreply@rapidemail.rmlconnect.net",
                 "from_name": "Example Name",
-                "to": [
-                    {
-                        "email": "harshpandey011@gmail.com",
-                        "name": "Recipient Name",
-                        "type": "to"
-                    }
-                ],
+                "to": email,
                 "headers": {
                     "Reply-To": "noreply@rapidemail.rmlconnect.net",
                     "X-Unique-Id": "id "
@@ -54,12 +48,12 @@ export const sendEmail = (req, res, roomId) => {
 
     };
 
-    NotificationService.sendEmail(options)
+    return NotificationService.sendEmail(options)
 }
 
 
-export const sendSms = () => {
-    var phone = '+919791424288'
+export const sendSms = (phone) => {
+    var phone = phone
     var message = "The meeting has started. Please check your email to join the meeting!"
     var options = {
         'method': 'GET',
@@ -67,6 +61,49 @@ export const sendSms = () => {
         'headers': {
         }
     };
-    NotificationService.sendSms(options)
+    return NotificationService.sendSms(options)
+
+}
+
+
+export const sendViaWhatsapp = (phone) => {
+    var options = {
+        'method': 'POST',
+        'url': 'https://rapidapi.rmlconnect.net/wbm/v1/message',
+        'headers': {
+            'Content-Type': 'application/json',
+            'Authorization': `${process.env.WHATSAPP_TOKEN}`
+        },
+        json: true,
+        body: {
+            "phone": phone,
+            "media": {
+                "type":
+                    "media_template",
+                "template_name":
+                    "admission_confirmation",
+                "lang_code": "en",
+                "body": [
+                    {
+                        "text": `Dear `
+                    },
+                    {
+                        "text": "text"
+                    },
+                    {
+                        "text": "date"
+                    },
+                    {
+                        "text": "date"
+                    },
+                    {
+                        "text": "text"
+                    }
+                ]
+            }
+        }
+
+    };
+    return NotificationService.sendViaWhatsapp(options)
 
 }

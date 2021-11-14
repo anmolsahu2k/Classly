@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button, Typography, Paper, Grid, FormControlLabel, Checkbox, Link, Container, CssBaseline, Box } from '@material-ui/core'
+import { Button, Typography, Paper, Grid, FormControlLabel, Checkbox, Link, Container, CssBaseline, Box, MenuItem, Select, InputLabel, FormControl } from '@material-ui/core'
 import { GoogleLogin } from 'react-google-login';
 import { signin, signup } from '../../actions/auth';
 import useStyles from './styles';
@@ -30,6 +30,7 @@ const Auth = () => {
         lastName: '',
         email: '',
         phone: '',
+        role: '',
         password: '',
         confirmPassword: ''
     })
@@ -91,6 +92,20 @@ const Auth = () => {
                                     <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
                                     <Input name="lastName" label="Last Name" handleChange={handleChange} half />
                                     <Input name="phone" label="Phone" handleChange={handleChange} full />
+                                    <FormControl variant="outlined" fullWidth >
+                                        <InputLabel id="role">Role</InputLabel>
+                                        <Select
+                                            name="role"
+                                            labelId="role"
+                                            id="demo-simple-select-outlined"
+                                            onChange={handleChange}
+                                            label="Role"
+                                            fullWidth
+                                        >
+                                            <MenuItem value='student'>Student</MenuItem>
+                                            <MenuItem value='teacher'>Teacher</MenuItem>
+                                        </Select>
+                                    </FormControl>
                                 </>
                             )}
 
