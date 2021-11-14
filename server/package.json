@@ -32,5 +32,8 @@
     "websocket": "^1.0.34",
     "ws": "^8.0.0",
     "ytdl-core": "^4.9.1"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
