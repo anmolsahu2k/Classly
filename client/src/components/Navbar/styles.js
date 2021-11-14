@@ -82,7 +82,8 @@ const useStyles = makeStyles((theme) => ({
         padding: '1rem',
     },
     titleImage: {
-        height: 50,
+        margin: '6px',
+        height: 40,
         marginLeft: 70,
         padding: '0.7rem'
     },

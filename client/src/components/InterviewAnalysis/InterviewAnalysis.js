@@ -66,7 +66,7 @@ const InterviewAnalysis = () => {
                 <Grid item xs={8} className={classes.rightGrid}>
                     <ThemeProvider theme={headlineTheme}>
                         <Typography component="h1" variant="h5" style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                            Real-Time Analysis
+                            Real-Time Class Analysis
                         </Typography>
                     </ThemeProvider>
                     <div className={classes.text}>

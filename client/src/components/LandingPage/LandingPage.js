@@ -106,7 +106,7 @@ const LandingPage = () => {
                         <div className="flip-card" data-aos="fade-left">
                             <div className="flip-card-inner">
                                 <div className="flip-card-front">
-                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Real-Time Analysis</Typography>
+                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Real-Time Class Video Analysis</Typography>
                                 </div>
                                 <div className="flip-card-back">
                                     <Typography variant="body1" style={{ marginTop: '4rem', fontSize: '20px', padding: '2rem' }}>This service can be used to analyze a classroom session in real-time to get visual data and suggestions to improve the performance in real-time.</Typography>

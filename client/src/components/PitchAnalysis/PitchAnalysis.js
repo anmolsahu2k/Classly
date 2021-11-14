@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
 import { sendvideodata } from '../../actions/pitchAnalysis'
-import { Typography, TextField, Button, Grid, Paper, CircularProgress, Fab } from '@material-ui/core';
-import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
+import { Typography, TextField, Button, Grid, CircularProgress } from '@material-ui/core';
 
 import useStyles from './styles';
 
@@ -23,7 +22,6 @@ const PitchAnalysis = () => {
     const [isJoinedRoom, setJoinedRoom] = useState(false);
     const [iswhiteboardOpen, setWhiteboardOpen] = useState(false);
 
-    const [isResponse, setIsResponse] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = new FormData();
@@ -50,11 +48,6 @@ const PitchAnalysis = () => {
 
     const handleClassChange = (e) => {
         setRoomID(e.target.value)
-    }
-
-    const handleCloseWhiteboard = (e) => {
-        console.log('shdf')
-        setWhiteboardOpen(false);
     }
 
     const handleOpenWhiteboard = (e) => {

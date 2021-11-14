@@ -86,9 +86,9 @@ export default function Dashboard() {
                                         <Grid container item xs={5} style={{ height: "25rem", margin: 'auto' }} >
                                             <Paper style={{ width: '100%', margin: '0 2rem', height: '100%', textAlign: 'center' }} className={classes.paper}>
                                                 <Avatar alt="Remy Sharp" src="" />
-                                                <Typography>Email: {userData.result.email}</Typography>
-                                                <Typography>Name: {userData.result.name}</Typography>
-                                                <Typography>Joined On: {isoToDate(userData.result.joinedOn)}</Typography>
+                                                <Typography variant="h5"><span style={{fontWeight:"bold"}}> Name: </span>{userData.result.name}</Typography>
+                                                <Typography variant="h5"><span style={{fontWeight:"bold"}}>Joined On:</span> {isoToDate(userData.result.joinedOn)}</Typography>
+                                                <Typography variant="h5"><span style={{fontWeight:"bold"}}>Email:</span> {userData.result.email}</Typography>
                                             </Paper>
                                         </Grid>
                                     </Grow>
