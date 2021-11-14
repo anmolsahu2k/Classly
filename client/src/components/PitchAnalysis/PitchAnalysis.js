@@ -131,17 +131,17 @@ const PitchAnalysis = () => {
                                 </Typography>
                             </ThemeProvider>
                             <TextField className={classes.input} name='className' value={formData.className} onChange={handleClassChange} variant="outlined" required fullWidth label='Class Name' />
-                            <Button variant="contained" color="primary" component="span" onClick={handleRoomSubmit}>
-                                {isJoinedRoom ? 'Close Class' : 'Join Class'}
-                            </Button>
+                            {!isJoinedRoom ? 
+                                <Button variant="contained" color="primary" component="span" onClick={handleRoomSubmit}>
+                                    Join Room
+                                </Button> : ''
+                            }
 
                             {console.log(isJoinedRoom)}
                             {
                                 isJoinedRoom && iswhiteboardOpen ?
                                     <>
-                                        <Button variant="contained" color="primary" style={{ marginRight: '5px' }} component="span" onClick={handleCloseWhiteboard}>
-                                            Close Whiteboard
-                                        </Button>
+                                
                                     </> :
                                     <>
                                         <Button variant="contained" color="primary" style={{ marginLeft: '5px' }} component="span" onClick={handleOpenWhiteboard}>
