@@ -54,8 +54,9 @@
 ### Installation
 
 1. Two APIs are being used 
-- symbl.ai API
+- Route Mobile Api
 - words API
+- symbl.ai API
 
 2. Clone the repo
    ```sh
@@ -75,21 +76,25 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 ### Introduction
-In this era of cut throat competition for job placements, there is a greater than ever need of self assessment for ensuring that the current level of job preparation is upto the general industry standards.
-This leads to the need of a solution that allows the interviewee to visualize their performance in order to work on their area of weakness and vastly increase their chances of performing well in a job interview amongst others.
-Additionally, interviewers can objectively analyse the performance of the candidates for selection.
+The COVID-19 has resulted in schools shut all across the world. Globally, over 1.2 billion children are out of the classroom. As a result, education has changed dramatically, with the distinctive rise of e-learning, whereby teaching is undertaken remotely and on digital platforms.
+Research suggests that online learning has been shown to increase retention of information, and take less time, meaning the changes coronavirus have caused might be here to stay. Therefore, we are required to accommodate and adapt to the changes we are put through. The best solution to the problems in the current scenario is digitalisation. One of the major hard hit industries during Covid-19 pandemic has been the education industry. And therefore there is a greater than ever need to provide a web application which satisfies the need of online learning. 
+This invoked us to create a solution that allows students in any educational institution to get the most in-classroom experience.
+
 
 ### Objective: 
-Our objective is to develop a web platform which enables users to analyse their performance during a pitch/interview and generate detailed analytics that is presented to them in a graphical and textual format.
+Our objective was to develop a web platform which makes interaction between teachers and students more efficient and smart. The platform encourages and corroborates e-learning and bridges the education gap between urban and rural students by introducing an industry level platform to enhance the way of remote teaching.
+By utilising a variety of collaboration tools and engagement tactics, we built a controlled, hospitable atmosphere for students and teachers that goes beyond merely recreating a physical class/lecture through video capabilities.
+This application will help schools and institutions provide a consistent experience for each student to participate and take classes as realistic as possible.
+
+
 
 ### Implementation: 
-On the client side, we will be implementing ReactJs as a frontend framework.
-
-On Server side, we will be using NodeJs as a runtime environment, with Express as a framework and MongoDb Atlas as a database. 
-
-APIs that we will be using to facilitate our service will be Symbl.ai’s Streaming API, telephony API, async API ,conversation API for speech analytics and Microsoft Azure’s face API for facial analytics.
-
+On the client side, we will be implementing ReactJs as a frontend framework assisted with TensorflowJs for generating analytics of emotions and topic wise analysis and and nivoCharts.Js for visualizing transcript data.
+On Server side, NodeJs is used as a runtime environment, with Express as a framework and MongoDb Atlas as a cloud database. 
+Among APIs, we have used Route Mobile API’s Whatsapp, email and sms API for communication between students and teachers, we have used Symbl.ai’ API for speech analytics and Komprehend’s NLP API for other sentence traits (such as: emotions, intent, abusive and sarcastical words) to facilitate our services.
 Performance analytics is based on the combined data from the verbal as well as non-verbal transcripts.
+
+
 
 ### Technology used:
 * Frontend
@@ -101,85 +106,39 @@ Performance analytics is based on the combined data from the verbal as well as n
     * NodeJS
     * ExpressJS
 * Database
-    * MongoDB
+    * MongoDB Atlas
 * APIs
+    * Route Mobile APIs
     * Symbl.ai
     * Words API
-    * Websockets
-
-
+    * Komprehend’s NLP API
 
 ### Applications:
 Following are the real world applications of our idea.
-As a student or a professional, everyone needs a platform to assess their communication skills. Our platform will provide them a medium to assess themselves and their performance in various circumstances. I.e. pitch meetings, presentations, SWOT analysis presentations . 
-Our platform will help users to assess their performance in mock peer to peer interviews conducted on their mutual interests, which will give them an insight about themselves.
-Our Application can also be used to get a detailed analysis of the applicant/users who are subjected to any type of interview. (Job Interview, Group discussion etc.).
+- Class can be recorded by teacher or student as and when required, which gets downloaded into the local folder and can be referenced in the future.
+- Our application can also be used to get a detailed analysis of the teacher and student interaction which happens during the session and can be later used to provide the parents a better perspective of their child’s performance.
+- Timely notifications are sent via email, SMS and whatsapp to both the students and the teachers so that no one misses a session and assignments.
+- Teachers can view detailed report of how interactive the class is. On the basis of that they get suggestion report to make positive changes in their teaching
+- Compare visual data between different classroom sessions
+
 
 
 
 ### Final Result: 
-The outcome of our idea will be a platform where users(i.e. Students, professionals) will be able to assess themselves or others on verbal and non-verbal aspects. A detailed analysis with user-friendly visualization will help different users in separate ways. 
+The outcome of our idea will be a platform where users(i.e. Students, Teachers) will be able to assess themselves or others on verbal and non-verbal aspects. A detailed analysis with user-friendly visualization will help different users in separate ways. Teachers can easily oraganize classes and students will be alerted in a timely manner
 
 ### Future Plans: 
-Providing more features to the users regarding peer interviews.
+Weekly tasks for students to upscale their skills.
+Providing more features to the students regarding peer chatting. 
 Detailed analysis and solution to the problems detected during assessment.
 Scaling the application for a diaspora of users connected with interviews, interrogation and presentations.
-
-
-<!-- ![Landing Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/landing.png) -->
-
-<!-- Our project "Sahayak" is a community platform that enables users to volunteer and help nearby users in need of any emergency assistance or aid. Through the website, users can send SOS request to other users in the specified radius. Once the SOS request is sent, the nearby users receive the request and they have the choice to either accept the request or reject it depending on their personal situation
-
-* How it is different from others? 
-Our app will be sending SOS messages not only to nearest police/medical stations, assigned relatives but also to the local people who live near the victim’s house.
-All the people registered on the app will be verified with some kind of official documentation (aadhaar card/PAN etc.). This verification is done to remove the possibility of misuse of the application by some random person. All the requests made and requests answered will be stored in a log.
-
-* How sending messages to people living near the victims house will help? 
-Sending messages to the local people will be beneficial as they can offer help much faster than police/ambulances.
-e.g. If someone crashed his car on highway, locals can help promptly than police/ambulance. -->
-
-
-<!-- ## Screenshots -->
-
-<!-- ### Landing Page
-![Landing Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/landing.png)
-### Signup
-![Signup Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/signup.jpeg)
-### Login
-![Login Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/login.jpeg)
-### Dashboard
-![Dashboard Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/dashboard.jpeg)
-### Activity Log
-![Activity Log Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/activityLog.jpeg)
-### Activity Log Timeline
-![Activity Log Timeline](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/activityLogTimeline.jpeg)
-### Accept Requests
-![Accept Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/accept.jpeg)
-### User Settings
-![Settings Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/settings.jpeg)
-### Reset Password
-![Reset Password Page](https://github.com/anmolsahu2k/Sahayak/blob/master/public/assets/img/reset.png) -->
+Peer to peer communication and comparison among friends from friend’s list.
+Adding customer support using Route Mobile Voice API.
+Much More Efficient use of Route Mobile Whatsapp API
+Sending suggestions to teacher and students according to classroom session via whatsapp/email/sms
 
 
 
-<!-- USAGE EXAMPLES -->
-<!-- ## Usage
-
-Our platform enables users to volunteer and help nearby users in need of any emergency assistance or aid. Through the website, users can send SOS request to other users in the radius of 2km. Once the SOS request is sent, the nearby users (within 2km) receive the request and they have the choice to either accept the request or reject it depending their personal situation.<br>
-Through this, the requester can get immediate assistance through nearby volunteers.
-Through the google maps api provided on the platform the volunteer will be able to get the address of the requester.
-Even the requester will be able to view his/her location on the google maps before sending the request 
- -->
-
-
-<!-- LICENSE -->
-<!-- ## License
-
-Distributed under the MIT License.
- -->
-
-
-<!-- CONTACT -->
 ## Contact
 
 - Abhinav Tripathi - abhi3pathi01@gmail.com
