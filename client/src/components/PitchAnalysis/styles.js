@@ -29,6 +29,9 @@ export default makeStyles((theme) => ({
         borderTop: 'none',
         borderRight: 'none'
     },
+    classForm: {
+        marginTop: theme.spacing(2)
+    },
     form: {
         width: '80%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),

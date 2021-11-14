@@ -18,7 +18,7 @@ export const joinZoomCall = (formData) => API.post('/analysis/interviewAnalysis'
 export const getAnalysis = (formData) => API.post('/analysis/interviewAnalysisResult', formData)
 export const stopAnalysis = (connectionId) => API.get(`/analysis/stopInterviewAnalysis/${connectionId}`)
 
-//---------------Pitch Analysis axios APIs------------//
+//---------------Interaction Analysis axios APIs------------//
 export const sendVideoData = (formData) => API.post('/analysis/pitchAnalysis/sendVideoData', formData, {
     headers: {
         "Content-Type": "multipart/form-data"

@@ -29,7 +29,7 @@ const Home = () => {
                         </Grid>
                         <Grid item>
                             <Paper className={classes.paper} data-aos="fade-zoom-in">
-                                <Button className={classes.button} component={Link} to="/pitchAnalysis" fullWidth variant="contained" color="default" align="center"><ThemeProvider theme={headlineTheme}><Typography style={{ color: '#f4f4f4', textAlign: 'center', fontWeight: 'bold' }}>Pitch Analysis</Typography></ThemeProvider></Button>
+                                <Button className={classes.button} component={Link} to="/pitchAnalysis" fullWidth variant="contained" color="default" align="center"><ThemeProvider theme={headlineTheme}><Typography style={{ color: '#f4f4f4', textAlign: 'center', fontWeight: 'bold' }}>Interaction Analysis</Typography></ThemeProvider></Button>
                             </Paper>
                         </Grid>
                         <Grid item>

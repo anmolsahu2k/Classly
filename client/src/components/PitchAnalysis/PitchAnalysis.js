@@ -20,8 +20,10 @@ const PitchAnalysis = () => {
     const [roomID, setRoomID] = useState("")
     const [isSubmit, setIsSubmit] = useState(false)
     const [selectedFileName, setSelectedFileName] = useState("");
+    const [isJoinedRoom, setJoinedRoom] = useState(false);
+    const [iswhiteboardOpen, setWhiteboardOpen] = useState(false);
 
-    const [isResponse, setIsResponse] = useState(false)
+    const [isResponse, setIsResponse] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = new FormData();
@@ -38,12 +40,25 @@ const PitchAnalysis = () => {
         // const data = classFormData;
         // console.log(data);
         // dispatch(joincall(data))
-        console.log('hi', roomID)
-        window.location.assign(`/videoCall/${roomID}`);
+        if(!isJoinedRoom){
+            window.open(`/videoCall/${roomID}`, '_blank').focus();
+            setJoinedRoom(true);
+        } else {
+            setJoinedRoom(false);
+        }
     }
 
     const handleClassChange = (e) => {
         setRoomID(e.target.value)
+    }
+
+    const handleCloseWhiteboard = (e) => {
+        console.log('shdf')
+        setWhiteboardOpen(false);
+    }
+
+    const handleOpenWhiteboard = (e) => {
+        setWhiteboardOpen(true);
     }
 
     const handleChange = (e) => {
@@ -99,7 +114,7 @@ const PitchAnalysis = () => {
                 <Grid item xs={8} className={classes.rightGrid}>
                     <ThemeProvider theme={headlineTheme}>
                         <Typography component="h1" variant="h5" style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                            Pitch Analysis
+                            Interaction Analysis
                         </Typography>
                     </ThemeProvider>
                     <div className={classes.text}>
@@ -108,11 +123,31 @@ const PitchAnalysis = () => {
                         </Typography>
                     </div>
                     <div>
-                    <form>
+                    <form className={classes.classForm}>
+                            <ThemeProvider theme={headlineTheme}>
+                                <Typography component="h1" variant="h5" style={{ textAlign: 'center', fontWeight: 'bold' }}>
+                                    Join Class
+                                </Typography>
+                            </ThemeProvider>
                             <TextField className={classes.input} name='className' value={formData.className} onChange={handleClassChange} variant="outlined" required fullWidth label='Class Name' />
                             <Button variant="contained" color="primary" component="span" onClick={handleRoomSubmit}>
-                                Join Class
+                                { isJoinedRoom ? 'Close Class' : 'Join Class' }
                             </Button>
+                            
+                            {console.log(isJoinedRoom)}
+                            {
+                                isJoinedRoom && iswhiteboardOpen ?                             
+                                <>
+                                    <Button variant="contained" color="primary" style={{marginRight: '5px'}} component="span" onClick={handleCloseWhiteboard}>
+                                        Close Whiteboard
+                                    </Button>
+                                </> : 
+                                <>
+                                    <Button variant="contained" color="primary" style={{marginLeft: '5px'}} component="span" onClick={handleOpenWhiteboard}>
+                                        Open Whiteboard
+                                    </Button>
+                                </>
+                            }
                             </form>
                     </div>
                 </Grid>
