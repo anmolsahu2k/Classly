@@ -32,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '3rem',
         // marginLeft: '4rem'
     },
+    titleImage: {
+        marginTop: '5rem',
+    },
     textStyle: {
         textShadow: '0 1px 0 rgba(255, 255, 255, 0.4)'
     },

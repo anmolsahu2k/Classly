@@ -32,9 +32,10 @@ const LandingPage = () => {
                 <Grid container component="main">
                     <Grid item xs={6} className={classes.leftGrid} data-aos="fade-right">
                         <ThemeProvider theme={headlineTheme}>
-                            <Typography style={{ width: '80%', fontWeight: 'bold', fontSize: 50 }}><span className={classes.textStyle} style={{ color: 'white', display: 'block' }}>Analyze Videos</span> <span style={{ color: 'white', display: 'block' }}>Amplify Your Skills</span>Achieve Future Goals</Typography>
+                            <Typography style={{ width: '80%', fontWeight: 'bold', fontSize: 50 }}><span className={classes.textStyle} style={{ color: '#66BFBF', display: 'block' }}>Educate</span> <span style={{ color: 'white', display: 'block' }}> <span style={{ color: '#66BFBF' }}> Evaluate</span> Results</span><span style={{ color: '#66BFBF' }}> Enhance</span> Your Skills</Typography>
                         </ThemeProvider>
-                        <Typography variant="body1" style={{ width: '80%', marginTop: '2rem' }}>Get your videos analyzed to get valuable insights. Improve performance based on the insights. Ultimately achieve future goals with an improved performance.</Typography>
+
+                        <Typography variant="body1" style={{ width: '80%', marginTop: '2rem' }}>Take online classes the right way and give your students the best in-classroom experience possible. Make the most of our services to improve and enhance the way of teaching. </Typography>
                         {user?.result ? ('') : (<Button component={Link} className={classes.button} to="/auth" variant="" color="primary" style={{ width: '200px' }}>Get Started</Button>)}
                     </Grid>
                     <Grid item xs={5} className={classes.rightGrid} data-aos="fade-left" style={{ border: 'none' }}>
@@ -56,16 +57,17 @@ const LandingPage = () => {
                             <img src="https://www.cambridgemaths.org/Images/The-trouble-with-graphs.jpg" width="500" height="400" alt="Graph" />
                         </Grid>
                         <Grid items xs={6} className={classes.aboutRightGrid} data-aos="fade-left">
-                            <Typography variant="body1">In this era of cut throat competition for job placements, there is a greater than ever need of self assessment for ensuring that the current level of job preparation is upto the general industry standards.
-                                This led us to create a solution that allows the interviewee to visualize their performance in order to work on their area of weakness and vastly increase their chances of performing well in a job interview amongst others.
-                                Additionally, interviewers can objectively analyse the performance of the candidates for selection.
+                            <Typography variant="body1" style={{ textAlign: 'justify' }}>The COVID-19 has resulted in schools shut all across the world. Globally, over 1.2 billion children are out of the classroom. As a result, education has changed dramatically, with the distinctive rise of e-learning, whereby teaching is undertaken remotely and on digital platforms.
+                                We are required to accommodate and adapt to the changes we are put through.One of the major hard hit industries during Covid-19 pandemic has been the education industry. And therefore there is a greater than ever need to provide a web application which satisfies the need of online learning.
+                                This invoked us to create a solution that allows students in any educational institution to get the most in-classroom experience.
+
                             </Typography>
                             <Typography variant="h6" style={{ marginTop: '2rem', color: '#1e2572', fontWeight: 'bold' }}>Why Choose Us!</Typography>
                             <ul>
-                                <li><Typography variant="body1">Interactive Visual Analysis</Typography></li>
-                                <li><Typography variant="body1">Analyze Grammatical Mistakes </Typography></li>
-                                <li><Typography variant="body1">Get New and Effective Words</Typography></li>
-                                <li><Typography variant="body1">Share Your Progress With Others</Typography></li>
+                                <li><Typography variant="body1">Take online class with 100+ students at once</Typography></li>
+                                <li><Typography variant="body1">Record the ongoing session along with screen </Typography></li>
+                                <li><Typography variant="body1">Get transcript and chat of the online class session</Typography></li>
+                                <li><Typography variant="body1">Get timely notifications via Email, SMS and Whatsapp never miss a session or assignment.</Typography></li>
                             </ul>
                         </Grid>
                     </Grid>
@@ -84,30 +86,30 @@ const LandingPage = () => {
                         <div className="flip-card" data-aos="fade-right">
                             <div className="flip-card-inner">
                                 <div className="flip-card-front">
-                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Performance Summary</Typography>
+                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Online Classroom</Typography>
                                 </div>
                                 <div className="flip-card-back">
-                                    <Typography variant="body1" style={{ marginTop: '4rem', fontSize: '20px', padding: '2rem' }}>A detailed summary with user-friendly data visualization of every performance done on this website.</Typography>
+                                    <Typography variant="body1" style={{ marginTop: '4rem', fontSize: '20px', padding: '2rem' }}>Take online class by creating a meeting and notifications sent to students automatically through Email, SMS and Whatsapp</Typography>
                                 </div>
                             </div>
                         </div>
                         <div className="flip-card" data-aos="zoom-in">
                             <div className="flip-card-inner">
                                 <div className="flip-card-front">
-                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Async Video Analysis</Typography>
+                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Interaction Analysis</Typography>
                                 </div>
                                 <div className="flip-card-back">
-                                    <Typography variant="body1" style={{ marginTop: '4rem', fontSize: '20px', padding: '2rem' }}>This service can be used to analyze a pre recorded meeting event to provide additional insights including sentiment, emotions and many more traits. </Typography>
+                                    <Typography variant="body1" style={{ marginTop: '4rem', fontSize: '20px', padding: '2rem' }}>This service can be used to analyze a pre recorded classroom session to provide additional insights including sentiment, emotions and many more traits. </Typography>
                                 </div>
                             </div>
                         </div>
                         <div className="flip-card" data-aos="fade-left">
                             <div className="flip-card-inner">
                                 <div className="flip-card-front">
-                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Real-Time Video Analysis</Typography>
+                                    <Typography style={{ marginTop: '2rem', fontSize: '24px', color: 'white' }}>Real-Time Analysis</Typography>
                                 </div>
                                 <div className="flip-card-back">
-                                    <Typography variant="body1" style={{ marginTop: '4rem', fontSize: '20px', padding: '2rem' }}>This service can be used to analyze a meeting event in real-time to get visual data and suggestions to improve the performance in real-time.</Typography>
+                                    <Typography variant="body1" style={{ marginTop: '4rem', fontSize: '20px', padding: '2rem' }}>This service can be used to analyze a classroom session in real-time to get visual data and suggestions to improve the performance in real-time.</Typography>
                                 </div>
                             </div>
                         </div>

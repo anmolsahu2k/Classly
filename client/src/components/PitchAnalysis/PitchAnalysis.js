@@ -120,7 +120,7 @@ const PitchAnalysis = () => {
                     </ThemeProvider>
                     <div className={classes.text}>
                         <Typography variant="h6">
-                            This service can be used to analyze a pre recorded meeting event to provide additional insights including sentiment, emotions and many more traits. Please enter video url(YouTube) OR upload a local video to get insights.
+                            This service can be used to analyze a pre recorded classroom session to provide additional insights including sentiment, emotions and many more traits. Please enter video url(YouTube) OR upload a local video to get insights.
                         </Typography>
                     </div>
                     <div>
