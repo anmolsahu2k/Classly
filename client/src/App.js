@@ -19,6 +19,7 @@ import InterviewAnalysisResult from './components/InterviewAnalysisResult/Interv
 import Comparison from './components/Comparison/Comparison';
 import JoinRoom from './components/VideoCall/JoinRoom'
 import VideoCall from './components/VideoCall/VideoCall'
+import WhiteBoard from './components/Whiteboard/Whiteboard';
 
 
 const THEME = createTheme({
@@ -54,6 +55,8 @@ const App = () => {
 
                         <Route path="/joinRoom" exact component={JoinRoom} />
                         <Route path="/videoCall/:id" exact component={VideoCall} />
+                        <Route path="/whiteBoard" exact component={WhiteBoard} />
+
 
                     </Switch>
                 </Container>

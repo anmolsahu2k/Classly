@@ -40,7 +40,7 @@ const PitchAnalysis = () => {
         // const data = classFormData;
         // console.log(data);
         // dispatch(joincall(data))
-        if(!isJoinedRoom){
+        if (!isJoinedRoom) {
             window.open(`/videoCall/${roomID}`, '_blank').focus();
             setJoinedRoom(true);
         } else {
@@ -59,6 +59,7 @@ const PitchAnalysis = () => {
 
     const handleOpenWhiteboard = (e) => {
         setWhiteboardOpen(true);
+        window.open('/whiteBoard', '_blank').focus();
     }
 
     const handleChange = (e) => {
@@ -123,7 +124,7 @@ const PitchAnalysis = () => {
                         </Typography>
                     </div>
                     <div>
-                    <form className={classes.classForm}>
+                        <form className={classes.classForm}>
                             <ThemeProvider theme={headlineTheme}>
                                 <Typography component="h1" variant="h5" style={{ textAlign: 'center', fontWeight: 'bold' }}>
                                     Join Class
@@ -131,24 +132,24 @@ const PitchAnalysis = () => {
                             </ThemeProvider>
                             <TextField className={classes.input} name='className' value={formData.className} onChange={handleClassChange} variant="outlined" required fullWidth label='Class Name' />
                             <Button variant="contained" color="primary" component="span" onClick={handleRoomSubmit}>
-                                { isJoinedRoom ? 'Close Class' : 'Join Class' }
+                                {isJoinedRoom ? 'Close Class' : 'Join Class'}
                             </Button>
-                            
+
                             {console.log(isJoinedRoom)}
                             {
-                                isJoinedRoom && iswhiteboardOpen ?                             
-                                <>
-                                    <Button variant="contained" color="primary" style={{marginRight: '5px'}} component="span" onClick={handleCloseWhiteboard}>
-                                        Close Whiteboard
-                                    </Button>
-                                </> : 
-                                <>
-                                    <Button variant="contained" color="primary" style={{marginLeft: '5px'}} component="span" onClick={handleOpenWhiteboard}>
-                                        Open Whiteboard
-                                    </Button>
-                                </>
+                                isJoinedRoom && iswhiteboardOpen ?
+                                    <>
+                                        <Button variant="contained" color="primary" style={{ marginRight: '5px' }} component="span" onClick={handleCloseWhiteboard}>
+                                            Close Whiteboard
+                                        </Button>
+                                    </> :
+                                    <>
+                                        <Button variant="contained" color="primary" style={{ marginLeft: '5px' }} component="span" onClick={handleOpenWhiteboard}>
+                                            Open Whiteboard
+                                        </Button>
+                                    </>
                             }
-                            </form>
+                        </form>
                     </div>
                 </Grid>
             </Grid>
