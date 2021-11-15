@@ -3,6 +3,7 @@ import * as NotificationController from '../notification/notificationController.
 import * as NotificationService from '../notification/notificationService.js'
 export const getRoom = (req, res) => {
     const roomId = req.params.id
+    console.log(roomId, "****")
     let options = {
         'method': 'GET',
         'url': `https://api.daily.co/v1/rooms/${roomId}`,

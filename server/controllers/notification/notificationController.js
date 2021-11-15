@@ -32,7 +32,7 @@ export const sendEmail = (req, res, roomId, email) => {
             "token": "aZ4Voo7ssZNwnCdXxwWc0uwk",
             "smtp_user_name": "smtp56728640",
             "message": {
-                "html": `The class has started! Please join the class by clicking on this link: http://localhost:3000/videoCall/${roomId}`,
+                "html": `The class has started! Please join the class by clicking on this link: https://classly-elearning.herokuapp.com/videoCall/${roomId}`,
                 "text": "Please Join the meeting",
                 "subject": "ClassRoom session Link",
                 "from_email": "noreply@rapidemail.rmlconnect.net",
