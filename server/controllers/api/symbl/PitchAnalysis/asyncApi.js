@@ -211,13 +211,15 @@ export const sendVideoData = async (req, res) => {
                                             let i;
                                             for (i = 0; i < messageData.length; i++) {
                                                 let tempEmotion = data.extraAnalysis.emotion[0].emotion[i]
-                                                let tempIntent = data.extraAnalysis.intent[0].intent[i].intent
+                                                let tempIntent = data.extraAnalysis.intent.length ? (data.extraAnalysis?.intent[0]?.intent) : null
                                                 let tempProfane = data.extraAnalysis.profaneWord[0].abuse[i]
-                                                let tempSarcasm = data.extraAnalysis.sarcasm[0][i]
+                                                let tempSarcasm = data.extraAnalysis.sarcasm[undefined] ? (data.extraAnalysis?.sarcasm[0][i]) : null
                                                 messageData[i].emotion = Object.keys(tempEmotion).reduce((a, b) => tempEmotion[a] > tempEmotion[b] ? a : b)
-                                                messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
+                                                if (tempIntent)
+                                                    messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
                                                 messageData[i].profane = Object.keys(tempProfane).reduce((a, b) => tempProfane[a] > tempProfane[b] ? a : b)
-                                                messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
+                                                if (tempSarcasm)
+                                                    messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
                                             }
                                             //Creating the Final data
                                             await AnalysisData.create({ handlerId: req.userId, conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } });
@@ -234,13 +236,15 @@ export const sendVideoData = async (req, res) => {
                                             let i;
                                             for (i = 0; i < messageData.length; i++) {
                                                 let tempEmotion = data.extraAnalysis.emotion[0].emotion[i]
-                                                let tempIntent = data.extraAnalysis.intent[0].intent[i].intent
+                                                let tempIntent = data.extraAnalysis.intent.length ? (data.extraAnalysis?.intent[0]?.intent) : null
                                                 let tempProfane = data.extraAnalysis.profaneWord[0].abuse[i]
-                                                let tempSarcasm = data.extraAnalysis.sarcasm[0][i]
+                                                let tempSarcasm = data.extraAnalysis.sarcasm[undefined] ? (data.extraAnalysis?.sarcasm[0][i]) : null
                                                 messageData[i].emotion = Object.keys(tempEmotion).reduce((a, b) => tempEmotion[a] > tempEmotion[b] ? a : b)
-                                                messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
+                                                if (tempIntent)
+                                                    messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
                                                 messageData[i].profane = Object.keys(tempProfane).reduce((a, b) => tempProfane[a] > tempProfane[b] ? a : b)
-                                                messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
+                                                if (tempSarcasm)
+                                                    messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
                                             }
                                             await AnalysisData.updateOne({ _id: existingUser._id }, { $push: { conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } } }).exec(function (err, response) {
                                                 if (err) {
@@ -290,13 +294,15 @@ export const sendVideoData = async (req, res) => {
                                         let i;
                                         for (i = 0; i < messageData.length; i++) {
                                             let tempEmotion = data.extraAnalysis.emotion[0].emotion[i]
-                                            let tempIntent = data.extraAnalysis.intent[0].intent
+                                            let tempIntent = data.extraAnalysis.intent.length ? (data.extraAnalysis?.intent[0]?.intent) : null
                                             let tempProfane = data.extraAnalysis.profaneWord[0].abuse[i]
-                                            let tempSarcasm = data.extraAnalysis.sarcasm[0][i]
+                                            let tempSarcasm = data.extraAnalysis.sarcasm[undefined] ? (data.extraAnalysis?.sarcasm[0][i]) : null
                                             messageData[i].emotion = Object.keys(tempEmotion).reduce((a, b) => tempEmotion[a] > tempEmotion[b] ? a : b)
-                                            messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
+                                            if (tempIntent)
+                                                messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
                                             messageData[i].profane = Object.keys(tempProfane).reduce((a, b) => tempProfane[a] > tempProfane[b] ? a : b)
-                                            messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
+                                            if (tempSarcasm)
+                                                messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
                                         }
                                         //Creating the Final data
                                         await AnalysisData.create({ handlerId: req.userId, conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } });
@@ -314,13 +320,15 @@ export const sendVideoData = async (req, res) => {
                                         let i;
                                         for (i = 0; i < messageData.length; i++) {
                                             let tempEmotion = data.extraAnalysis.emotion[0].emotion[i]
-                                            let tempIntent = data.extraAnalysis.intent[0].intent
+                                            let tempIntent = data.extraAnalysis.intent.length ? (data.extraAnalysis?.intent[0]?.intent) : null
                                             let tempProfane = data.extraAnalysis.profaneWord[0].abuse[i]
-                                            let tempSarcasm = data.extraAnalysis.sarcasm[0][i]
+                                            let tempSarcasm = data.extraAnalysis.sarcasm[undefined] ? (data.extraAnalysis?.sarcasm[0][i]) : null
                                             messageData[i].emotion = Object.keys(tempEmotion).reduce((a, b) => tempEmotion[a] > tempEmotion[b] ? a : b)
-                                            messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
+                                            if (tempIntent)
+                                                messageData[i].intent = Object.keys(tempIntent).reduce((a, b) => tempIntent[a] > tempIntent[b] ? a : b)
                                             messageData[i].profane = Object.keys(tempProfane).reduce((a, b) => tempProfane[a] > tempProfane[b] ? a : b)
-                                            messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
+                                            if (tempSarcasm)
+                                                messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
                                         }
                                         await AnalysisData.updateOne({ _id: existingUser._id }, { $push: { conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } } }).exec(function (err, response) {
                                             if (err) {
@@ -359,4 +367,3 @@ export const sendVideoData = async (req, res) => {
     }
     console.log(req.body);
 }
-
