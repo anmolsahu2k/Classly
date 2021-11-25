@@ -107,3 +107,48 @@ export const sendViaWhatsapp = (phone, name) => {
     return NotificationService.sendViaWhatsapp(options)
 
 }
+
+export const startChatSession = () => {
+    var options = {
+        'method': 'POST',
+        'url': `https://rapidapi.rmlconnect.net/wbm/v1/message`,
+        'headers': {
+            'Content-Type': 'application/json',
+            'Authorization': `${process.env.WHATSAPP_TOKEN}`
+        },
+        json: true,
+        body: {
+            "phone": "+919415552244",
+            "extra": "{your value}",
+            "media": {
+                "type": "interactive_reply",
+                "header": {
+                    "text": "Super Selector Match"
+                },
+                "body": "HI TAN, please select an option below",
+                "footer_text": "c@2021",
+                "button": [
+                    {
+                        "id": "1",
+                        "title": "Yes"
+                    },
+                    {
+                        "id": "2",
+                        "title": "No"
+                    },
+                    {
+                        "id": "3",
+                        "title": "Maybe"
+                    }
+                ]
+            }
+        }
+    };
+    return NotificationService.startChatSession(options)
+
+}
+
+export const response = (req, res) => {
+    console.log(req.body, "response")
+    return res.status(200).json({ message: "recieved", data: req.body })
+}
