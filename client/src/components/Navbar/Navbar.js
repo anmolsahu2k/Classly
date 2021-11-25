@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
-
 import { LOGOUT } from '../../constants/actionTypes'
 import { AppBar, Typography, IconButton, Toolbar, Button } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
 import Scroll from 'react-scroll'
 import './styles.js'
-
-
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import useStyles from './styles';
+
 
 const Navbar = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -98,12 +97,15 @@ const Navbar = () => {
                 </div>
             </Toolbar>
             <Toolbar className={classes.rightToolbar}>
-                {user?.result ? (
+                {user?.result ? (<>
                     <div className={classes.profile}>
+                        <Link to='/chat' style={{ color: "#FFC947" }}>
+                            <ChatBubbleIcon style={{ fontSize: 50 }} />
+                        </Link>
                         <Typography component={Link} className={classes.userName} variant="h6" to='/dashboard'>{user.result.name}</Typography>
                         <Button className={classes.button} variant="contained" color="secondary" onClick={logout} >Log Out</Button>
                     </div>
-                ) : (
+                </>) : (
                     <Button component={Link} className={classes.button} to="/auth" variant="contained" color="primary" style={{ marginRight: '120px' }} >Sign In</Button>
                 )}
             </Toolbar>

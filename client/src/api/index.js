@@ -33,3 +33,10 @@ export const joincall = (roomId) => {
     console.log("aaarahahai")
     return API.get(`/video-call/${roomId}`)
 }
+
+// export const startChat = (roomId) => {
+//     return API.post(`/chat-session/${roomId}`);
+// }
+// export const getChat = (roomId) => {
+//     return API.get(`/chat-session/${roomId}`);
+// }

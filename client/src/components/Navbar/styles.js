@@ -63,9 +63,10 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '20px',
         display: 'flex',
         justifyContent: 'space-left',
-        width: '400px',
+        width: '350px',
     },
     userName: {
+        marginLeft: '20px',
         marginRight: '20px',
         display: 'flex',
         alignItems: 'center',
