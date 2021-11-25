@@ -6,6 +6,7 @@ import path, { dirname } from 'path';
 import authRoutes from './routes/auth.js'
 import analysisRoutes from './routes/analysis.js'
 import videoCallRoutes from './controllers/videoCall/videoCallRoutes.js'
+import notificationRoutes from './controllers/notification/notificationRoutes.js'
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -43,6 +44,7 @@ app.use(function (req, res, next) {
 app.use('/user', authRoutes);
 app.use('/analysis', analysisRoutes);
 app.use('/video-call', videoCallRoutes);
+app.use('/notifications', notificationRoutes)
 
 
 if (process.env.NODE_ENV == "production") {

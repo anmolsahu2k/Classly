@@ -4,6 +4,7 @@ import { startInterviewAnalysis, InterviewAnalysisResult, stopInterviewAnalysis 
 import { sendVideoData } from '../controllers/api/symbl/PitchAnalysis/asyncApi.js'
 import { getDataToCompare, getConversationList, fetchAnanlysisData } from '../controllers/analysisData.js'
 import auth from '../middleware/auth.js';
+import { textAnalysis } from '../controllers/api/symbl/ConversationApi/apiCalls.js';
 
 const router = express.Router();
 
@@ -19,6 +20,8 @@ router.get('/pitchAnalysis/getConversationList/', auth, getConversationList);
 //------------Dashboard routes------------//
 router.get('/pitchAnalysis/getComparisonData/:conversationId1/:conversationId2', auth, getDataToCompare)
 router.get('/pitchAnalysis/fetchAnalysisResult/:conversationId', auth, fetchAnanlysisData)
+
+router.post('/chat-session/report', auth, textAnalysis)
 
 
 export default router;

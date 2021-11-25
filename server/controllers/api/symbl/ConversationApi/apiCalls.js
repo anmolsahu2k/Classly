@@ -246,7 +246,33 @@ export const getSummary = (conversationId, authToken) => {
                 reject(err)
             }
             else {
-                console.log("insideGetQuestions", body);
+                console.log("insideGetSummary", body);
+                resolve(body)
+            }
+
+        });
+    })
+
+}
+
+export const textAnalysis = (chatData, authToken) => {
+    return new Promise((resolve, reject) => {
+        request.post({
+            url: 'https://api.symbl.ai/v1/process/text',
+            headers: { 'Authorization': `Bearer ${authToken}` },
+            json: true,
+            body: {
+                "name": "Business Meeting",
+                "confidenceThreshold": 0.6,
+                "detectPhrases": true,
+                "messages": chatData
+            }
+        }, (err, response, body) => {
+            if (err) {
+                reject(err)
+            }
+            else {
+                console.log("insideChatData", body);
                 resolve(body)
             }
 

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import AnalysisData from '../models/analysisDataModel.js';
+import { generateAuthToken, textAnalysis } from './api/symbl/ConversationApi/apiCalls.js';
 
 
 export const getDataToCompare = async (req, res) => {
@@ -55,5 +56,15 @@ export const fetchAnanlysisData = async (req, res) => {
             console.log(response.conversationIdData[0].analysisData, "in fetch ggggg")
             res.status(200).json({ analysisData: response.conversationIdData[0].analysisData })
         }
+    })
+}
+
+export const generateChatAnalysis = async (req, res) => {
+    const chatData = req.body.chatData
+    generateAuthToken((authToken) => {
+        await textAnalysis(chatData, authToken.accessToken).then((data) => {
+
+        })
+
     })
 }
