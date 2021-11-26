@@ -14,6 +14,5 @@ export const JOIN_VIDEO_CALL = 'JOIN_VIDEO_CALL'
 
 export const GET_CHAT = 'GET_CHAT'
 
-
-
+export const APPEND_CHAT = 'APPEND_CHAT'
 export const SEND_SUMMARY = 'SEND_SUMMARY'
