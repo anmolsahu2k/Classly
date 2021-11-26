@@ -16,3 +16,4 @@ export const GET_CHAT = 'GET_CHAT'
 
 
 
+export const SEND_SUMMARY = 'SEND_SUMMARY'
