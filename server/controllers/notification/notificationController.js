@@ -151,14 +151,21 @@ export const startChatSession = () => {
 export const response = (req, res) => {
     const dummyData = [
         {
-            from: 'abhinav',
+            from: '919415552244',
             message: 'hello',
+            timestamp: '1637925233'
         },
         {
-            from: 'abhinav',
-            message: 'how are you'
+            from: '919415552244',
+            message: 'how are you',
+            timestamp: '1637925250'
+        },
+        {
+            from: '918928894215',
+            message: 'what is your name',
+            timestamp: '1637925300'
         }
     ]
     console.log('sdhfs')
-    return res.status(200).json({ message: "recieved", data: dummyData})
+    return res.status(200).json({ message: "recieved", data: dummyData })
 }
