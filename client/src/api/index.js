@@ -34,6 +34,12 @@ export const joincall = (roomId) => API.get(`/video-call/${roomId}`)
 
 export const getChatResponse = () =>  API.get('/notifications/response') 
 
+
+export const sendSummary = (summary) => {
+    console.log("summary received", summary)
+    return API.post('/notifications/sendSummary', summary);
+}
+
 // export const startChat = (roomId) => {
 //     return API.post(`/chat-session/${roomId}`);
 // }
