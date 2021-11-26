@@ -98,6 +98,14 @@ const SummaryAnalysis = () => {
     return (
         <Grow in={open} >
             <>
+                <Grid item xs={12} md={12} lg={12}>
+                    <Paper className={fixedHeightPaper}>
+                        <Typography style={{ position: 'relative', top: '2.5rem', marginBottom: '2rem', width: '100%', textAlign: 'center', justifyContent: 'center', fontSize: 40 }}>Summary</Typography>
+
+                        {analysisData.summary.summary.map((summary) => (<Typography style={{ position: 'relative', top: '2.5rem', marginBottom: '2rem', width: '100%', justifyContent: 'center', fontSize: 24 }}>&#8226; &nbsp; {summary.text}</Typography>))}
+
+                    </Paper>
+                </Grid>
                 <Grid item xs={12} md={8} lg={4}>
                     <Paper className={fixedHeightPaper}>
                         <Typography style={{ width: '100%', marginTop: '4rem', textAlign: 'center', justifyContent: 'center', fontSize: 69, fontWeight: 'bolder' }}>{analysisData.analytics.members.length}</Typography>
@@ -119,7 +127,7 @@ const SummaryAnalysis = () => {
 
                     </Paper>
                 </Grid>
-                
+
                 <Grid item xs={12} md={8} lg={4}>
                     <Paper className={fixedHeightPaper}>
                         {SimplePie}
@@ -135,7 +143,7 @@ const SummaryAnalysis = () => {
                     </Paper>
                 </Grid>
 
-                <Grid item xs={12} md={4} lg={4} style={{ marginBottom: '6rem' }}>
+                <Grid item xs={12} md={4} lg={4} style={{ marginBottom: '2rem' }}>
                     <Paper className={fixedHeightPaper}>
                         <span role="img" aria-label="sheep" style={{ fontSize: '104px', textAlign: 'center' }}>
                             {averageEmotion === 'Happy' && '🙂'}
@@ -149,6 +157,7 @@ const SummaryAnalysis = () => {
 
                     </Paper>
                 </Grid>
+
             </>
         </Grow>
 
