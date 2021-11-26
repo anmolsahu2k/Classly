@@ -1,4 +1,4 @@
-import { FETCH_ANALYSIS_RESULT, GET_COMPARISON_DATA } from '../constants/actionTypes';
+import { FETCH_ANALYSIS_RESULT, GET_COMPARISON_DATA, SEND_SUMMARY } from '../constants/actionTypes';
 import { GET_CONVO_LIST } from '../constants/actionTypes';
 
 const dashboardReducer = (state = { analysisData: {}, comparisonData: {}, conversationList: {} }, action) => {
