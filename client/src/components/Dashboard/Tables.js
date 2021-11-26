@@ -23,7 +23,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import { getcomparisondata, fetchanalysisresult, getconversationlist } from '../../actions/dashboard';
+import { getcomparisondata, fetchanalysisresult, getconversationlist, sendsummary } from '../../actions/dashboard';
 
 
 
@@ -65,6 +65,7 @@ const headCells = [
     { id: "calories", numeric: true, disablePadding: false, label: "Created At" },
     { id: "fat", numeric: true, disablePadding: false, label: "Conversation ID" },
     { id: "result", numeric: true, disablePadding: false, label: "View Results" },
+    { id: "send", numeric: true, disablePadding: false, label: "Send to WhatsApp" },
     { id: "compare", numeric: true, disablePadding: false, label: "Add to Compare" },
 ];
 
@@ -320,6 +321,9 @@ export default function Tables() {
     const handleButtonClick = (conversationId) => {
         dispatch(fetchanalysisresult(conversationId, history))
     }
+    const handleSend = () => {
+        dispatch(sendsummary(tableData[0].analysisData.summary.summary));
+    }
     const spinner = <div style={{ alignContent: 'center', textAlign: 'center', justifyContent: 'center', marginTop: '8rem' }}>
         <CircularProgress />
         <Typography variant="body1" style={{ display: 'block', textAlign: 'center', marginTop: '2rem' }}>Loading meeting history</Typography>
@@ -380,6 +384,12 @@ export default function Tables() {
                                                 <TableCell align="center" style={{ fontSize: '18px' }}>
                                                     <Button variant="contained" color="primary" onClick={() => (handleButtonClick(row.conversationId))}>
                                                         View
+                                                    </Button>
+
+                                                </TableCell>
+                                                <TableCell align="center" style={{ fontSize: '18px' }}>
+                                                    <Button variant="contained" color="primary" onClick={() => (handleSend(row.conversationId))}>
+                                                        Send
                                                     </Button>
 
                                                 </TableCell>
