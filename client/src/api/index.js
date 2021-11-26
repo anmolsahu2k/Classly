@@ -32,12 +32,16 @@ export const fetchAnalysisResult = (conversationId) => API.get(`/analysis/pitchA
 //for video calling
 export const joincall = (roomId) => API.get(`/video-call/${roomId}`)
 
-export const getChatResponse = () =>  API.get('/notifications/response') 
+export const getChatResponse = () => API.get('/notifications/response')
 
 
 export const sendSummary = (summary) => {
     console.log("summary received", summary)
     return API.post('/notifications/sendSummary', summary);
+}
+export const appendChat = (chat) => {
+    console.log("chat sent", chat)
+    return API.post('/notifications/appendChat', chat);
 }
 
 // export const startChat = (roomId) => {
