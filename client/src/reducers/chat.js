@@ -1,12 +1,14 @@
-import { GET_CHAT } from '../constants/actionTypes';
+import { GET_CHAT, APPEND_CHAT } from '../constants/actionTypes';
 
-const chatReducer = (state = { chatData: {} }, action) => {
+const chatReducer = (chatArray = [], action) => {
     switch (action.type) {
         case GET_CHAT:
-            localStorage.setItem('chatData', JSON.stringify({ ...action?.data }));
-            return { ...state, chatData: action?.data };
+            localStorage.setItem('chatArray', JSON.stringify(...action?.data));
+            return action?.data;
+        case APPEND_CHAT:
+            return [...chatArray, action?.data];
         default:
-            return state;
+            return chatArray;
     }
 };
 
