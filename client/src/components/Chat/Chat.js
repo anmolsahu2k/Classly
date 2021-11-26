@@ -17,7 +17,7 @@ import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
 import ChatList from './chatList';
 
-import { getChat }  from '../../actions/chat'
+import { getChat, appendChat } from '../../actions/chat'
 
 const useStyles = makeStyles({
     table: {
@@ -42,8 +42,13 @@ const useStyles = makeStyles({
 const Chat = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [teacherChat, setTeacherChat] = useState([]);
-    const [parentChat, setParentChat] = useState([]);
+    const chatArray = useSelector(state => state.chat);
+    const [chatData, setChatData] = useState({ from: '', message: '', timestamp: '' });
+    const [chatList, setChatList] = useState([]);
+
+    useEffect(() => {
+        if (chatArray) setChatList([...chatArray]);
+    }, [chatArray])
 
     useEffect(() => {
         const ws = new WebSocket(`ws://localhost:5000/notifications/response`)
@@ -74,12 +79,11 @@ const Chat = () => {
     // setInterval(function(){ 
     //     console.log('set')
     //     dispatch(getChat())
-    //  }, 5000);    
-    const chatData = useSelector(state => state.chat.chatData);
-    console.log(chatData, 'compo');
+    //  }, 5000);   
 
     const handleChatSubmit = () => {
-
+        console.log("chat submit", chatData);
+        dispatch(appendChat(chatData))
     }
 
     return (
@@ -108,42 +112,42 @@ const Chat = () => {
                     <ChatList />
                 </Grid>
                 <Grid item xs={9}>
-                    <List className={classes.messageArea}>
-                        <ListItem key="1">
-                            <Grid container>
-                                <Grid item xs={12}>
-                                    <ListItemText align="right" primary="Hey man, What's up ?"></ListItemText>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <ListItemText align="right" secondary="09:30"></ListItemText>
-                                </Grid>
-                            </Grid>
-                        </ListItem>
-                        <ListItem key="2">
-                            <Grid container>
-                                <Grid item xs={12}>
-                                    <ListItemText align="left" primary="Hey, Iam Good! What about you ?"></ListItemText>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <ListItemText align="left" secondary="09:31"></ListItemText>
-                                </Grid>
-                            </Grid>
-                        </ListItem>
-                        <ListItem key="3">
-                            <Grid container>
-                                <Grid item xs={12}>
-                                    <ListItemText align="right" primary="Cool. i am good, let's catch up!"></ListItemText>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <ListItemText align="right" secondary="10:30"></ListItemText>
-                                </Grid>
-                            </Grid>
-                        </ListItem>
-                    </List>
+                    {chatList !== undefined ? (<List className={classes.messageArea}>
+                        {chatList.map((data, index) => (
+                            data.from === '919415552244' ?
+                                (<ListItem key="1">
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <ListItemText align="right" primary={data.message}></ListItemText>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <ListItemText align="right" secondary={data.timestamp}></ListItemText>
+                                        </Grid>
+                                    </Grid>
+                                </ListItem>) : ''
+
+                        ))}
+                        {chatList.map((data, index) => (
+                            data.from === '918928894215' ?
+                                (
+                                    <ListItem key="2">
+                                        <Grid container>
+                                            <Grid item xs={12}>
+                                                <ListItemText align="left" primary={data.message}></ListItemText>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <ListItemText align="left" secondary={data.timestamp}></ListItemText>
+                                            </Grid>
+                                        </Grid>
+                                    </ListItem>) : ''
+                        ))}
+                    </List>) : ''}
                     <Divider />
                     <Grid container style={{ padding: '20px' }}>
                         <Grid item xs={11}>
-                            <TextField id="outlined-basic-email" label="Type Something" fullWidth />
+                            {/* <TextField id="outlined-basic-email" label="Type Something" fullWidth /> */}
+                            <TextField id="outlined-basic-email" name="message" variant="outlined" label="Type Something" fullWidth onChange={(e) => setChatData({ from: '919415552244', message: e.target.value, timestamp: Date.now() })} />
+
                         </Grid>
                         <Grid xs={1} align="right">
                             <Fab color="primary" aria-label="add" onClick={handleChatSubmit}><SendIcon /></Fab>
