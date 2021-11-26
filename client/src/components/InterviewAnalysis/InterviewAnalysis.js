@@ -15,13 +15,6 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 const InterviewAnalysis = () => {
     let message = ""
 
-
-
-
-
-
-
-
     const [formData, setFormData] = useState({ meetingTitle: '', url: '' })
     const dispatch = useDispatch()
     const history = useHistory();
@@ -31,20 +24,11 @@ const InterviewAnalysis = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(joinZoomCall(formData, history))
-
-
-
         // ws.onclose = () => {
         //     console.log("gadbadd")
         //     // dispatch(stopAnalysis(connectionData.connectionId))
         // }
-
-
-
-
     }
-
-
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });

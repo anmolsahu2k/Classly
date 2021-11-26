@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         flexGrow: 1,
-        height: '92vh',
+        height: '100vh',
         // height: '100%'
 
     },

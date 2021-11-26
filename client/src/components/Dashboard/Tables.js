@@ -324,8 +324,6 @@ export default function Tables() {
         <CircularProgress />
         <Typography variant="body1" style={{ display: 'block', textAlign: 'center', marginTop: '2rem' }}>Loading meeting history</Typography>
     </div>
-    console.log(page, "-page");
-    console.log(rowsPerPage, "-rowsperpage");
     return (
 
         <div className={classes.root} >

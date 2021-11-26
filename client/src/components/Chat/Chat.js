@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import { Button } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -13,6 +15,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
+import ChatList from './chatList';
+
+import { getChat }  from '../../actions/chat'
 
 const useStyles = makeStyles({
     table: {
@@ -36,6 +41,46 @@ const useStyles = makeStyles({
 
 const Chat = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const [teacherChat, setTeacherChat] = useState([]);
+    const [parentChat, setParentChat] = useState([]);
+
+    useEffect(() => {
+        const ws = new WebSocket(`ws://localhost:5000/notifications/response`)
+        ws.onopen = (connection) => {
+            console.log("Successfully Connected", connection)
+        }
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+
+            console.log(data);
+            // if (data.type === 'message_response') {
+            //     for (let message of data.messages) {
+            //         console.log('Transcript (more accurate): ', message.payload.content);
+            //     }
+            // }
+            // if (data.type === 'topic_response') {
+            //     for (let topic of data.topics) {
+            //         console.log('Topic detected: ', topic.phrases)
+            //     }
+            // }
+        }
+        ws.onerror = (err) => {
+            console.error(err);
+        };
+        ws.onclose = () => {
+        }
+    }, [])
+    // setInterval(function(){ 
+    //     console.log('set')
+    //     dispatch(getChat())
+    //  }, 5000);    
+    const chatData = useSelector(state => state.chat.chatData);
+    console.log(chatData, 'compo');
+
+    const handleChatSubmit = () => {
+
+    }
 
     return (
         <div>
@@ -57,29 +102,10 @@ const Chat = () => {
                     <Divider />
                     <Grid item xs={12} style={{ padding: '10px' }}>
                         <TextField id="outlined-basic-email" label="Search" variant="outlined" fullWidth />
+                        <Button>Quit</Button>
                     </Grid>
                     <Divider />
-                    <List>
-                        <ListItem button key="RemySharp">
-                            <ListItemIcon>
-                                <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
-                            </ListItemIcon>
-                            <ListItemText primary="Remy Sharp">Remy Sharp</ListItemText>
-                            <ListItemText secondary="online" align="right"></ListItemText>
-                        </ListItem>
-                        <ListItem button key="Alice">
-                            <ListItemIcon>
-                                <Avatar alt="Alice" src="https://material-ui.com/static/images/avatar/3.jpg" />
-                            </ListItemIcon>
-                            <ListItemText primary="Alice">Alice</ListItemText>
-                        </ListItem>
-                        <ListItem button key="CindyBaker">
-                            <ListItemIcon>
-                                <Avatar alt="Cindy Baker" src="https://material-ui.com/static/images/avatar/2.jpg" />
-                            </ListItemIcon>
-                            <ListItemText primary="Cindy Baker">Cindy Baker</ListItemText>
-                        </ListItem>
-                    </List>
+                    <ChatList />
                 </Grid>
                 <Grid item xs={9}>
                     <List className={classes.messageArea}>
@@ -120,7 +146,7 @@ const Chat = () => {
                             <TextField id="outlined-basic-email" label="Type Something" fullWidth />
                         </Grid>
                         <Grid xs={1} align="right">
-                            <Fab color="primary" aria-label="add"><SendIcon /></Fab>
+                            <Fab color="primary" aria-label="add" onClick={handleChatSubmit}><SendIcon /></Fab>
                         </Grid>
                     </Grid>
                 </Grid>

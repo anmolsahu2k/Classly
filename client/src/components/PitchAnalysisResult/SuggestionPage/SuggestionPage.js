@@ -13,7 +13,7 @@ const SuggestionPage = () => {
             <>
                 <div style={{ margin: 'auto' }}>
                     <Paper className={classes.reportWrapper}>
-                        <Typography style={{ color: 'rgb(8,125,37)', width: '100%', marginTop: '4rem', textAlign: 'center', justifyContent: 'center', fontSize: 69, fontWeight: 'bolder' }}>Suggestions</Typography>
+                        <Typography style={{ color: 'rgb(8,125,37)', width: '100%', marginTop: '4rem', textAlign: 'center', justifyContent: 'center', fontSize: 69, fontWeight: 'bolder' }}>Chat Report</Typography>
                         <Typography style={{ width: '100%', marginTop: '4rem', textAlign: 'left', justifyContent: 'center', fontSize: 32, fontWeight: 'bold' }}>Pace</Typography>
                         <Typography variant="body1" style={{ width: '100%', textAlign: 'left', fontSize: 20 }}>Your Pace is <strong>optimal</strong>, which is between the range of <strong>150 WPM - 200 WPM</strong>. You don't need further correction.</Typography>
                         <Typography variant="h3" style={{ width: '100%', marginTop: '4rem', textAlign: 'left', justifyContent: 'center', fontSize: 32, fontWeight: 'bold' }}>Overall Emotion</Typography>

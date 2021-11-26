@@ -62,8 +62,8 @@ export const fetchAnanlysisData = async (req, res) => {
 export const generateChatAnalysis = async (req, res) => {
     const chatData = req.body.chatData
     generateAuthToken((authToken) => {
-        await textAnalysis(chatData, authToken.accessToken).then((data) => {
-
+        textAnalysis(chatData, authToken.accessToken).then((data) => {
+            console.log(data);
         })
 
     })

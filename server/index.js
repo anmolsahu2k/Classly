@@ -15,7 +15,6 @@ dotenv.config();
 
 const app = express();
 // const __dirname = path.resolve();
-console.log(__dirname);
 
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(express.json({ limit: "30mb", extended: true }));

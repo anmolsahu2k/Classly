@@ -16,6 +16,7 @@ import Tabs from './Tabs'
 import useStyles from './styles'
 import { useDispatch, useSelector } from 'react-redux';
 import { getconversationlist } from '../../actions/dashboard';
+import ChatReport from './ChatReport';
 
 function Copyright() {
     return (
@@ -60,7 +61,7 @@ export default function Dashboard() {
 
     }
     return (
-        <div className={classes.root} style={{ backgroundImage: 'url("https://wallpapercave.com/wp/wp7752259.jpg")' }}>
+        <div className={classes.root} style={{ backgroundColor: "#eeeee", backgroundImage: 'url("https://wallpapercave.com/wp/wp7752259.jpg")' }}>
             <main className={classes.content}>
                 <Container maxWidth="xl" className={classes.container}>
                     <Grid container xs={12}>
@@ -77,11 +78,8 @@ export default function Dashboard() {
                                             <Tables />
                                         </Paper>
                                     </Grid>
-                                </Grow>) : (
+                                </Grow>) : tab === 2 ? (
                                 <>
-
-
-
                                     <Grow in={open}>
                                         <Grid container item xs={5} style={{ height: "25rem", margin: 'auto' }} >
                                             <Paper style={{ width: '100%', margin: '0 2rem', height: '100%', textAlign: 'center' }} className={classes.paper}>
@@ -92,11 +90,11 @@ export default function Dashboard() {
                                             </Paper>
                                         </Grid>
                                     </Grow>
-
-
-
-
                                 </>
+                            ) : (
+                                <Grid item xs={8} style={{ margin: 'auto' }}>
+                                    <ChatReport />
+                                </Grid>
                             )}
                         </Grid>
                     </Grid>
