@@ -4,8 +4,10 @@ import * as NotificationController from './notificationController.js'
 
 const router = express.Router();
 
-router.post("/chat-session/:id", NotificationController.startChatSession);
-router.get("/response", NotificationController.response)
+router.post("/appendChat", NotificationController.startChatSession);
+router.post("/response", NotificationController.response)
+router.post("/sendSummary", NotificationController.sendSummary)
+
 
 export default router;
 

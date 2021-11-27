@@ -3,9 +3,9 @@ import { GET_CHAT, APPEND_CHAT } from '../constants/actionTypes';
 const chatReducer = (chatArray = [], action) => {
     switch (action.type) {
         case GET_CHAT:
-            localStorage.setItem('chatArray', JSON.stringify(...action?.data));
-            return action?.data;
+            return
         case APPEND_CHAT:
+            console.log("ssssssssssss", action?.data)
             return [...chatArray, action?.data];
         default:
             return chatArray;

@@ -83,3 +83,17 @@ export const startChatSession = (options) => {
         });
     });
 };
+
+export const sendSummary = (options) => {
+    return new Promise(async (resolve, reject) => {
+        request(options, (error, response, body) => {
+            if (error) throw new Error(error);
+            console.log(body, 'session');
+            try {
+                resolve(body);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    });
+};

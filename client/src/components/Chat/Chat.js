@@ -16,8 +16,10 @@ import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
 import ChatList from './chatList';
+import moment from 'moment'
 
 import { getChat, appendChat } from '../../actions/chat'
+import { io } from "socket.io-client";
 
 const useStyles = makeStyles({
     table: {
@@ -45,36 +47,40 @@ const Chat = () => {
     const chatArray = useSelector(state => state.chat);
     const [chatData, setChatData] = useState({ from: '', message: '', timestamp: '' });
     const [chatList, setChatList] = useState([]);
+    const currentUser = JSON.parse(localStorage.getItem('profile')).result
+
+    // useEffect(() => {
+    //     if (chatArray) setChatList([...chatArray]);
+    // }, [chatArray])
+    // useEffect(() => {
+    //     localStorage.setItem('chatData', JSON.stringify(chatList))
+    // }, [chatList])
+    const socket = io('wss://classly-elearning.herokuapp.com/', { transports: ['websocket'] });
 
     useEffect(() => {
-        if (chatArray) setChatList([...chatArray]);
-    }, [chatArray])
+        // dispatch(getChat())
+        socket.on("connect", () => {
+            console.log(socket.connected, "*******"); // true
+        });
+        socket.on("data", (data) => {
+            console.log("****", data)
+            let localChatData = JSON.parse(localStorage.getItem('chatData'))
+            if (localChatData) {
+                data.forEach((ele) => {
+                    localChatData.push(ele)
+                })
+                localStorage.setItem('chatData', JSON.stringify(localChatData))
 
-    useEffect(() => {
-        const ws = new WebSocket(`ws://localhost:5000/notifications/response`)
-        ws.onopen = (connection) => {
-            console.log("Successfully Connected", connection)
-        }
-        ws.onmessage = (event) => {
-            const data = JSON.parse(event.data);
+            }
+            else {
+                localStorage.setItem('chatData', JSON.stringify([data]))
+            }
+            setChatList(JSON.parse(localStorage.getItem('chatData')))
+        })
+        socket.on("disconnect", () => {
+            console.log(socket.connected); // false
+        });
 
-            console.log(data);
-            // if (data.type === 'message_response') {
-            //     for (let message of data.messages) {
-            //         console.log('Transcript (more accurate): ', message.payload.content);
-            //     }
-            // }
-            // if (data.type === 'topic_response') {
-            //     for (let topic of data.topics) {
-            //         console.log('Topic detected: ', topic.phrases)
-            //     }
-            // }
-        }
-        ws.onerror = (err) => {
-            console.error(err);
-        };
-        ws.onclose = () => {
-        }
     }, [])
     // setInterval(function(){ 
     //     console.log('set')
@@ -83,7 +89,13 @@ const Chat = () => {
 
     const handleChatSubmit = () => {
         console.log("chat submit", chatData);
+        setChatList([...chatList, chatData])
         dispatch(appendChat(chatData))
+    }
+    const handleQuitEvent = () => {
+        socket.emit('end', () => {
+            console.log("Connection Closed")
+        })
     }
 
     return (
@@ -96,17 +108,18 @@ const Chat = () => {
             <Grid container component={Paper} className={classes.chatSection}>
                 <Grid item xs={3} className={classes.borderRight500}>
                     <List>
+
                         <ListItem button key="RemySharp">
                             <ListItemIcon>
-                                <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                                <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/54094722?v=4" />
                             </ListItemIcon>
-                            <ListItemText primary="John Wick"></ListItemText>
+                            <ListItemText primary={currentUser.name}></ListItemText>
                         </ListItem>
                     </List>
                     <Divider />
                     <Grid item xs={12} style={{ padding: '10px' }}>
                         <TextField id="outlined-basic-email" label="Search" variant="outlined" fullWidth />
-                        <Button>Quit</Button>
+                        <Button onClick={handleQuitEvent}>Quit</Button>
                     </Grid>
                     <Divider />
                     <ChatList />
@@ -114,29 +127,31 @@ const Chat = () => {
                 <Grid item xs={9}>
                     {chatList !== undefined ? (<List className={classes.messageArea}>
                         {chatList.map((data, index) => (
-                            data.from === '919415552244' ?
+                            data.from === currentUser.email ?
                                 (<ListItem key="1">
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <ListItemText align="right" primary={data.message}></ListItemText>
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <ListItemText align="right" secondary={data.timestamp}></ListItemText>
+                                            <ListItemText align="right" secondary={moment(data.timestamp).format("LT")}></ListItemText>
                                         </Grid>
                                     </Grid>
                                 </ListItem>) : ''
 
                         ))}
+
                         {chatList.map((data, index) => (
-                            data.from === '918928894215' ?
+                            data.from !== currentUser.email ?
                                 (
                                     <ListItem key="2">
                                         <Grid container>
                                             <Grid item xs={12}>
                                                 <ListItemText align="left" primary={data.message}></ListItemText>
+                                                <ListItemText align="right" primary={data.from}></ListItemText>
                                             </Grid>
                                             <Grid item xs={12}>
-                                                <ListItemText align="left" secondary={data.timestamp}></ListItemText>
+                                                <ListItemText align="left" secondary={moment.unix(data.timestamp).format("LT")}></ListItemText>
                                             </Grid>
                                         </Grid>
                                     </ListItem>) : ''
@@ -145,8 +160,9 @@ const Chat = () => {
                     <Divider />
                     <Grid container style={{ padding: '20px' }}>
                         <Grid item xs={11}>
+
                             {/* <TextField id="outlined-basic-email" label="Type Something" fullWidth /> */}
-                            <TextField id="outlined-basic-email" name="message" variant="outlined" label="Type Something" fullWidth onChange={(e) => setChatData({ from: '919415552244', message: e.target.value, timestamp: Date.now() })} />
+                            <TextField id="outlined-basic-email" name="message" variant="outlined" label="Type Something" fullWidth onChange={(e) => setChatData({ from: currentUser.email, message: e.target.value, timestamp: Date.now() })} />
 
                         </Grid>
                         <Grid xs={1} align="right">

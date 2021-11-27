@@ -321,8 +321,8 @@ export default function Tables() {
     const handleButtonClick = (conversationId) => {
         dispatch(fetchanalysisresult(conversationId, history))
     }
-    const handleSend = () => {
-        dispatch(sendsummary(tableData[0].analysisData.summary.summary));
+    const handleSend = (idx) => {
+        dispatch(sendsummary(tableData[idx].analysisData.summary.summary));
     }
     const spinner = <div style={{ alignContent: 'center', textAlign: 'center', justifyContent: 'center', marginTop: '8rem' }}>
         <CircularProgress />
@@ -388,7 +388,7 @@ export default function Tables() {
 
                                                 </TableCell>
                                                 <TableCell align="center" style={{ fontSize: '18px' }}>
-                                                    <Button variant="contained" color="primary" onClick={() => (handleSend(row.conversationId))}>
+                                                    <Button variant="contained" color="primary" onClick={() => (handleSend(index))}>
                                                         Send
                                                     </Button>
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// const API = axios.create({ baseURL: 'https://classly-elearning.herokuapp.com/' });
-const API = axios.create({ baseURL: 'http://localhost:5000/' });
+const API = axios.create({ baseURL: 'https://classly-elearning.herokuapp.com/' });
+// const API = axios.create({ baseURL: 'http://localhost:5000/' });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) {
@@ -32,7 +32,7 @@ export const fetchAnalysisResult = (conversationId) => API.get(`/analysis/pitchA
 //for video calling
 export const joincall = (roomId) => API.get(`/video-call/${roomId}`)
 
-export const getChatResponse = () => API.get('/notifications/response')
+export const getChatResponse = () => API.post('/notifications/response')
 
 
 export const sendSummary = (summary) => {

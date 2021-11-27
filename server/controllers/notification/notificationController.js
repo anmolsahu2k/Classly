@@ -1,5 +1,5 @@
 import * as NotificationService from './notificationService.js'
-
+import { io } from '../../index.js';
 export const addUserToSMTP = (req, res) => {
     var options = {
         'method': 'POST',
@@ -108,7 +108,9 @@ export const sendViaWhatsapp = (phone, name) => {
 
 }
 
-export const startChatSession = () => {
+export const startChatSession = (req, res) => {
+    const data = req.body.message
+    console.log(data)
     var options = {
         'method': 'POST',
         'url': `https://rapidapi.rmlconnect.net/wbm/v1/message`,
@@ -123,49 +125,62 @@ export const startChatSession = () => {
             "media": {
                 "type": "interactive_reply",
                 "header": {
-                    "text": "Super Selector Match"
+                    "text": "Message From Teacher"
                 },
-                "body": "HI TAN, please select an option below",
-                "footer_text": "c@2021",
+                "body": data,
+                "footer_text": "©Classly",
                 "button": [
                     {
                         "id": "1",
-                        "title": "Yes"
-                    },
-                    {
-                        "id": "2",
-                        "title": "No"
-                    },
-                    {
-                        "id": "3",
-                        "title": "Maybe"
+                        "title": "Okay"
                     }
                 ]
+
             }
         }
     };
-    return NotificationService.startChatSession(options)
+    NotificationService.startChatSession(options)
+    return res.sendStatus(200)
 
 }
 
 export const response = (req, res) => {
-    const dummyData = [
+    const data = [
         {
-            from: '919415552244',
-            message: 'hello',
-            timestamp: '1637925233'
-        },
-        {
-            from: '919415552244',
-            message: 'how are you',
-            timestamp: '1637925250'
-        },
-        {
-            from: '918928894215',
-            message: 'what is your name',
-            timestamp: '1637925300'
+            from: req.body.messages[0].from,
+            message: req.body.messages[0].text.body,
+            timestamp: req.body.messages[0].timestamp
         }
+
     ]
-    console.log('sdhfs')
-    return res.status(200).json({ message: "recieved", data: dummyData })
+
+    io.emit("data", data);
+
+    return res.sendStatus(200)
+}
+
+export const sendSummary = (req, res) => {
+    console.log(req.body, "*************************")
+    let summaryText = ''
+    req.body.forEach((ele) => {
+        summaryText += ele.text
+    })
+    console.log(summaryText, "summary", req.body)
+    var options = {
+        'method': 'POST',
+        'url': `https://rapidapi.rmlconnect.net/wbm/v1/message`,
+        'headers': {
+            'Content-Type': 'application/json',
+            'Authorization': `${process.env.WHATSAPP_TOKEN}`
+        },
+        json: true,
+        body: {
+            "phone": "+919415552244",
+            "text": summaryText,
+            "extra": "Successful"
+        }
+    };
+    NotificationService.sendSummary(options)
+    return res.sendStatus(200)
+
 }
