@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
     },
     chatSection: {
         width: '100%',
-        height: '80vh'
+        height: '90vh'
     },
     headBG: {
         backgroundColor: '#e0e0e0'
@@ -37,15 +38,21 @@ const useStyles = makeStyles({
     },
     messageArea: {
         height: '70vh',
-        overflowY: 'auto'
+        overflowY: 'auto',
+        padding: '2rem 2rem'
+    },
+    leftBackground: {
+        backgroundColor: '#e8e8e8'
     }
 });
 
 const Chat = () => {
+    const history = useHistory();
     const classes = useStyles();
     const dispatch = useDispatch();
     const chatArray = useSelector(state => state.chat);
     const [chatData, setChatData] = useState({ from: '', message: '', timestamp: '' });
+    const [message, setMessage] = useState("")
     const [chatList, setChatList] = useState([]);
     const currentUser = JSON.parse(localStorage.getItem('profile')).result
 
@@ -91,22 +98,19 @@ const Chat = () => {
         console.log("chat submit", chatData);
         setChatList([...chatList, chatData])
         dispatch(appendChat(chatData))
+        setMessage("");
     }
     const handleQuitEvent = () => {
         socket.emit('end', () => {
             console.log("Connection Closed")
         })
+        history.push('/home')
     }
 
     return (
         <div>
-            <Grid container>
-                <Grid item xs={12} >
-                    <Typography variant="h5" className="header-message">Chat</Typography>
-                </Grid>
-            </Grid>
             <Grid container component={Paper} className={classes.chatSection}>
-                <Grid item xs={3} className={classes.borderRight500}>
+                <Grid item xs={3} className={`${classes.borderRight500} ${classes.leftBackground}`}>
                     <List>
 
                         <ListItem button key="RemySharp">
@@ -119,7 +123,14 @@ const Chat = () => {
                     <Divider />
                     <Grid item xs={12} style={{ padding: '10px' }}>
                         <TextField id="outlined-basic-email" label="Search" variant="outlined" fullWidth />
-                        <Button onClick={handleQuitEvent}>Quit</Button>
+                        <Button variant="contained" fullWidth style={{
+                            marginTop: '2rem',
+                            marginBottom: '2rem',
+                            backgroundColor: "#c61717",
+                            padding: "15px 36px",
+                            fontSize: "18px",
+                            color: 'white'
+                        }} onClick={handleQuitEvent}>Quit</Button>
                     </Grid>
                     <Divider />
                     <ChatList />
@@ -128,10 +139,12 @@ const Chat = () => {
                     {chatList !== undefined ? (<List className={classes.messageArea}>
                         {chatList.map((data, index) => (
                             data.from === currentUser.email ?
-                                (<ListItem key="1">
+                                (<ListItem key={index}>
                                     <Grid container>
                                         <Grid item xs={12}>
+                                            <Paper style={{alignItems: 'right', padding: '0.5rem 1rem', float: 'right', color: 'white', borderRadius: '5px', fontWeight: 'bold', backgroundColor: 'dodgerblue'}}>
                                             <ListItemText align="right" primary={data.message}></ListItemText>
+                                            </Paper>
                                         </Grid>
                                         <Grid item xs={12}>
                                             <ListItemText align="right" secondary={moment(data.timestamp).format("LT")}></ListItemText>
@@ -144,11 +157,12 @@ const Chat = () => {
                         {chatList.map((data, index) => (
                             data.from !== currentUser.email ?
                                 (
-                                    <ListItem key="2">
+                                    <ListItem key={index}>
                                         <Grid container>
                                             <Grid item xs={12}>
+                                                <Paper style={{alignItems: 'right', padding: '0.5rem 1rem', float: 'right', color: 'white', borderRadius: '5px', fontWeight: 'bold', backgroundColor: 'white'}}>
                                                 <ListItemText align="left" primary={data.message}></ListItemText>
-                                                <ListItemText align="right" primary={data.from}></ListItemText>
+                                                </Paper>
                                             </Grid>
                                             <Grid item xs={12}>
                                                 <ListItemText align="left" secondary={moment.unix(data.timestamp).format("LT")}></ListItemText>
@@ -160,10 +174,7 @@ const Chat = () => {
                     <Divider />
                     <Grid container style={{ padding: '20px' }}>
                         <Grid item xs={11}>
-
-                            {/* <TextField id="outlined-basic-email" label="Type Something" fullWidth /> */}
-                            <TextField id="outlined-basic-email" name="message" variant="outlined" label="Type Something" fullWidth onChange={(e) => setChatData({ from: currentUser.email, message: e.target.value, timestamp: Date.now() })} />
-
+                            <TextField id="outlined-basic-email" value={message} name="message" variant="outlined" label="Type Something" fullWidth onChange={(e) => {setMessage(e.target.value); setChatData({ from: currentUser.email, message: e.target.value, timestamp: Date.now() })}} />
                         </Grid>
                         <Grid xs={1} align="right">
                             <Fab color="primary" aria-label="add" onClick={handleChatSubmit}><SendIcon /></Fab>

@@ -11,7 +11,7 @@ const chatList = () => {
     return (
         <>
             <List>
-                <ListItem button key="RemySharp">
+                <ListItem button key="RemySharp" style={{backgroundColor: 'lightgreen'}}>
                     <ListItemIcon>
                         <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/53134103?v=4" />
                     </ListItemIcon>
@@ -23,6 +23,7 @@ const chatList = () => {
                         <Avatar alt="Alice" src="https://avatars.githubusercontent.com/u/54502059?v=4" />
                     </ListItemIcon>
                     <ListItemText primary="Abhinav">Abhinav</ListItemText>
+                    <ListItemText secondary="online" align="right"></ListItemText>
                 </ListItem>
                 <ListItem button key="CindyBaker">
                     <ListItemIcon>
