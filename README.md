@@ -1,7 +1,7 @@
 # Classly
 
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/anmolsahu2k/Classly">
     <img src="https://fontmeme.com/permalink/211113/7d2d2b68eee534bbc07424fa5e08845e.png" alt="samarkan-font" border="0">
   </a>
   <h3 align="center">E-class Assistance Platform</h3>
@@ -142,7 +142,7 @@ Sending suggestions to teacher and students according to classroom session via w
 ## Contact
 
 - Abhinav Tripathi - abhi3pathi01@gmail.com
-- Harsh Pandey - 
+- Harsh Pandey - harshpandey011@gmail.com
 - Anmol Sahu - anmolsahu2k@gmail.com
 
 Project Link: [https://github.com/d-realcoder/Classly](https://github.com/d-realcoder/Classly)
