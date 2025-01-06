@@ -53,10 +53,11 @@
 
 ### Installation
 
-1. Three APIs are being used 
+1. Four APIs are being used 
 - Route Mobile Api
 - Words API
 - Symbl.ai API
+- Komprehend’s NLP API
 
 2. Clone the repo
    ```sh
