@@ -53,10 +53,10 @@
 
 ### Installation
 
-1. Two APIs are being used 
+1. Three APIs are being used 
 - Route Mobile Api
-- words API
-- symbl.ai API
+- Words API
+- Symbl.ai API
 
 2. Clone the repo
    ```sh
